@@ -125,26 +125,7 @@ function HomePage() {
             </Reveal>
           </div>
 
-          {/* Editorial grid — placeholders sofisticados */}
-          <div className="mt-16 grid gap-4 md:mt-24 md:grid-cols-12 md:gap-6">
-            {[
-              { span: "md:col-span-7 aspect-[4/5] md:aspect-[16/12]", label: "Residencial · Alto padrão" },
-              { span: "md:col-span-5 aspect-[4/5]", label: "Fachada Glazing" },
-              { span: "md:col-span-5 aspect-[4/5]", label: "Envidraçamento de sacada" },
-              { span: "md:col-span-7 aspect-[4/5] md:aspect-[16/10]", label: "Comercial · Alta performance" },
-              { span: "md:col-span-12 aspect-[16/6]", label: "Projeto assinatura" },
-            ].map((item, i) => (
-              <Reveal key={i} delay={i * 80} className={item.span}>
-                <PortfolioPlaceholder label={item.label} index={i + 1} />
-              </Reveal>
-            ))}
-          </div>
-
-          <Reveal className="mt-14 flex justify-center">
-            <Link to="/solucoes" className="btn-ghost">
-              Explorar nosso Portfólio Completo
-            </Link>
-          </Reveal>
+          <PortfolioGallery />
         </div>
       </section>
 
