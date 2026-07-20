@@ -145,32 +145,32 @@ export function Hero({
 
       <div
         ref={contentRef}
-        className="container-page relative z-0 flex w-full flex-col items-center px-6 py-32 text-center md:py-40"
+        className="container-page relative z-0 flex w-full flex-col items-start px-6 py-32 text-left md:py-40"
       >
-        <div className="mx-auto flex max-w-4xl flex-col items-center">
+        <div className="flex w-full max-w-3xl flex-col items-start">
           {eyebrow && (
             <p className="mb-8 inline-flex items-center gap-3 rounded-full border border-white/25 bg-white/10 px-5 py-2 text-[11px] font-medium uppercase tracking-[0.32em] text-white backdrop-blur-md">
               <span className="block h-px w-6 bg-champagne" />
               {eyebrow}
             </p>
           )}
-          <h1 className="text-balance font-display font-light text-[clamp(2.6rem,6.4vw,5.75rem)] leading-[1.04] tracking-[-0.01em] text-white [text-shadow:0_2px_30px_rgb(0_0_0/0.45)]">
+          <h1 className="text-balance font-display font-light text-[clamp(2.6rem,6.2vw,5.5rem)] leading-[1.04] tracking-[-0.01em] text-white [text-shadow:0_2px_30px_rgb(0_0_0/0.45)]">
             {title}
           </h1>
           {subtitle && (
-            <p className="mt-8 max-w-2xl text-pretty text-base leading-relaxed text-white/90 md:text-lg [text-shadow:0_1px_18px_rgb(0_0_0/0.5)]">
+            <p className="mt-8 max-w-xl text-pretty text-base leading-relaxed text-white/90 md:text-lg [text-shadow:0_1px_18px_rgb(0_0_0/0.5)]">
               {subtitle}
             </p>
           )}
           {cta && (
-            <div className="mt-10 flex flex-wrap items-center justify-center gap-4">{cta}</div>
+            <div className="mt-10 flex flex-wrap items-center gap-4">{cta}</div>
           )}
           {proofs && proofs.length > 0 && (
-            <ul className="mt-14 grid w-full max-w-3xl gap-px overflow-hidden rounded-2xl border border-white/20 bg-white/10 backdrop-blur-md sm:grid-cols-3">
+            <ul className="mt-14 grid w-full max-w-2xl gap-px overflow-hidden rounded-2xl border border-white/20 bg-white/10 backdrop-blur-md sm:grid-cols-3">
               {proofs.map((p) => (
                 <li
                   key={p}
-                  className="flex flex-col items-center gap-3 bg-white/5 px-5 py-6 text-center"
+                  className="flex flex-col items-start gap-3 bg-white/5 px-5 py-6 text-left"
                 >
                   <span className="block h-px w-8 bg-champagne" />
                   <span className="text-[13px] font-medium leading-snug text-white">{p}</span>
@@ -180,6 +180,7 @@ export function Hero({
           )}
         </div>
       </div>
+
 
       {/* scroll cue */}
       <div className="pointer-events-none absolute bottom-6 left-1/2 z-10 -translate-x-1/2 text-white/70">
