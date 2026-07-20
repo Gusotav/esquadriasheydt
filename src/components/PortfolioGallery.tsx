@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { Reveal } from "@/components/Reveal";
 import p1 from "@/assets/galeria/portfolio-1.webp.asset.json";
 import p2 from "@/assets/galeria/portfolio-2.webp.asset.json";
@@ -14,9 +14,11 @@ import p10 from "@/assets/galeria/portfolio-10.webp.asset.json";
 type Orient = "landscape" | "portrait";
 type Item = { url: string; alt: string; o: Orient };
 
-// Ordem calibrada para preencher a grade sem espaços vazios.
-// A cada 3 pares (landscape + portrait) + 1 par (portrait + portrait wide)
-// completamos um bloco de 8. Novas fotos apenas anexam ao array.
+/**
+ * Ordem intencional: intercalando landscape / portrait para que o algoritmo
+ * de grid consiga fechar cada linha em 12 colunas sem espaços vazios.
+ * Novas fotos: apenas anexar ao final; buildRows se reorganiza.
+ */
 const ALL: Item[] = [
   { url: p1.url, alt: "Fachada institucional Clínica Renal Oeste", o: "landscape" },
   { url: p3.url, alt: "Grande vão de vidro integrando cozinha e sala", o: "portrait" },
@@ -35,12 +37,30 @@ const INITIAL = 8;
 export function PortfolioGallery() {
   const [expanded, setExpanded] = useState(false);
   const items = expanded ? ALL : ALL.slice(0, INITIAL);
+  const rows = useMemo(() => buildRows(items), [items]);
 
   return (
     <>
-      <div className="mt-16 grid grid-cols-12 gap-2 md:mt-24 md:gap-3">
-        {items.map((it, i) => (
-          <GalleryCell key={i} item={it} index={i} total={items.length} />
+      <div className="mt-16 flex flex-col gap-2 md:mt-24 md:gap-3">
+        {rows.map((row, ri) => (
+          <div key={ri} className="grid grid-cols-12 gap-2 md:gap-3">
+            {row.map((cell, ci) => (
+              <Reveal
+                key={`${ri}-${ci}`}
+                delay={ci * 80}
+                className={`${cell.spanClass} group relative overflow-hidden rounded-xl bg-muted`}
+                style={{ aspectRatio: cell.aspect }}
+              >
+                <img
+                  src={cell.item.url}
+                  alt={cell.item.alt}
+                  loading={ri === 0 ? "eager" : "lazy"}
+                  decoding="async"
+                  className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1200ms] group-hover:scale-[1.04]"
+                />
+              </Reveal>
+            ))}
+          </div>
         ))}
       </div>
 
@@ -59,78 +79,77 @@ export function PortfolioGallery() {
   );
 }
 
-/**
- * Regras de layout (mobile-first):
- *  - mobile: 1 coluna, cada foto ocupa 12 cols com sua proporção nativa (sem corte).
- *  - md+: grid de 12 cols. Pareamos landscape (8) + portrait (4), aspect calibrado
- *    para que a altura de ambos coincida (4/3 * 8u == 3/2 * 4u), zero gap.
- *  - A cada 4 itens temos "row landscape+portrait" alternando lados.
- *  - Sobras de portraits no fim são exibidas em 2 col-span-6 aspect 3/2 (portrait grande),
- *    ou em faixa de col-span-4 aspect 2/3 se sobrar múltiplo de 3, sempre fechando 12.
- */
-function GalleryCell({ item, index, total }: { item: Item; index: number; total: number }) {
-  const layout = computeLayout(index, total, item.o);
+type Cell = { item: Item; spanClass: string; aspect: string };
 
-  return (
-    <Reveal
-      delay={(index % 4) * 80}
-      className={`${layout.mobile} ${layout.desktop} group relative overflow-hidden rounded-xl bg-muted`}
-      style={{ aspectRatio: layout.aspect }}
-    >
-      <img
-        src={item.url}
-        alt={item.alt}
-        loading={index < 4 ? "eager" : "lazy"}
-        decoding="async"
-        className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1200ms] group-hover:scale-[1.04]"
-      />
-    </Reveal>
-  );
+/**
+ * Agrupa itens em linhas de 12 colunas sem sobras.
+ * Cada padrão foi calibrado para que as cells de uma mesma linha tenham
+ * exatamente a mesma altura (ex.: 8u landscape 4/3 = 6u tall; 4u portrait 2/3 = 6u tall).
+ */
+function buildRows(items: Item[]): Cell[][] {
+  const rows: Cell[][] = [];
+  let i = 0;
+  while (i < items.length) {
+    const a = items[i];
+    const b = items[i + 1];
+    const c = items[i + 2];
+
+    // 3 portraits alinhados → col-span-4 cada, aspect 2/3
+    if (a?.o === "portrait" && b?.o === "portrait" && c?.o === "portrait") {
+      rows.push([
+        cell(a, "col-span-12 md:col-span-4", "2 / 3"),
+        cell(b, "col-span-12 md:col-span-4", "2 / 3"),
+        cell(c, "col-span-12 md:col-span-4", "2 / 3"),
+      ]);
+      i += 3;
+      continue;
+    }
+    // landscape + portrait → 8 + 4 (mesma altura)
+    if (a?.o === "landscape" && b?.o === "portrait") {
+      rows.push([
+        cell(a, "col-span-12 md:col-span-8", "4 / 3"),
+        cell(b, "col-span-12 md:col-span-4", "2 / 3"),
+      ]);
+      i += 2;
+      continue;
+    }
+    if (a?.o === "portrait" && b?.o === "landscape") {
+      rows.push([
+        cell(a, "col-span-12 md:col-span-4", "2 / 3"),
+        cell(b, "col-span-12 md:col-span-8", "4 / 3"),
+      ]);
+      i += 2;
+      continue;
+    }
+    // 2 landscapes → 6 + 6, aspect 3/2 (perfeito para landscape)
+    if (a?.o === "landscape" && b?.o === "landscape") {
+      rows.push([
+        cell(a, "col-span-12 md:col-span-6", "3 / 2"),
+        cell(b, "col-span-12 md:col-span-6", "3 / 2"),
+      ]);
+      i += 2;
+      continue;
+    }
+    // 2 portraits → 6 + 6, aspect 3/4 (leve corte lateral, altura maior = destaque)
+    if (a?.o === "portrait" && b?.o === "portrait") {
+      rows.push([
+        cell(a, "col-span-12 md:col-span-6", "3 / 4"),
+        cell(b, "col-span-12 md:col-span-6", "3 / 4"),
+      ]);
+      i += 2;
+      continue;
+    }
+    // Item sozinho no final → full width
+    if (a) {
+      rows.push([
+        cell(a, "col-span-12", a.o === "landscape" ? "16 / 9" : "3 / 4"),
+      ]);
+      i += 1;
+    }
+  }
+  return rows;
 }
 
-function computeLayout(index: number, total: number, o: Orient) {
-  // Mobile: sempre full-width, sem corte forçado — usamos aspect natural aproximado
-  const mobile = "col-span-12";
-  const mobileAspect = o === "landscape" ? "3 / 2" : "3 / 4";
-
-  // Desktop: encaixe em blocos de 4 itens (landscape 8 + portrait 4, alternando).
-  // Se houver "sobras" no final que não fecham 12 cols, entramos no modo tail:
-  const remaining = total - index;
-  const positionInBlock = index % 4;
-
-  // Detecta se estamos nos últimos itens que não formam bloco completo.
-  const inTail = total - (index - positionInBlock) < 4;
-
-  if (!inTail) {
-    // Blocos regulares de 4 itens: [L,P,P,L] alternado por linha
-    // Linha 1: L(8) + P(4)  → itens 0,1
-    // Linha 2: P(4) + L(8)  → itens 2,3 (invertido) — usamos ordem de dados assim:
-    //   0=L,1=P,2=P,3=L  (garante que row 2 comece com portrait à esquerda)
-    if (o === "landscape") {
-      return { mobile, mobileAspect, desktop: "md:col-span-8", aspect: `4 / 3` };
-    }
-    return { mobile, mobileAspect, desktop: "md:col-span-4", aspect: `2 / 3` };
-  }
-
-  // Tail: 1, 2 ou 3 itens restantes
-  const tailCount = remaining;
-  if (tailCount === 1) {
-    return { mobile, mobileAspect, desktop: "md:col-span-12", aspect: `16 / 6` };
-  }
-  if (tailCount === 2) {
-    // 2 itens: cada um col-span-6, aspect 3/2 (bom para landscape, aceitável para portrait)
-    return {
-      mobile,
-      mobileAspect,
-      desktop: "md:col-span-6",
-      aspect: o === "landscape" ? "3 / 2" : "1 / 1",
-    };
-  }
-  // 3 itens
-  return {
-    mobile,
-    mobileAspect,
-    desktop: "md:col-span-4",
-    aspect: o === "landscape" ? "4 / 3" : "2 / 3",
-  };
+function cell(item: Item, spanClass: string, aspect: string): Cell {
+  return { item, spanClass, aspect };
 }
