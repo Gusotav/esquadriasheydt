@@ -211,9 +211,9 @@ function HomePage() {
           </Reveal>
 
           <Reveal delay={140} className="relative">
-            <div className="relative overflow-hidden rounded-2xl bg-black/40 shadow-2xl ring-1 ring-white/10">
+            <div className="relative mx-auto overflow-hidden rounded-2xl bg-black/40 shadow-2xl ring-1 ring-white/10 max-w-[360px]">
               <video
-                className="aspect-video w-full object-cover"
+                className="aspect-[9/16] w-full object-contain bg-black"
                 src={videoDobra4.url}
                 controls
                 playsInline
