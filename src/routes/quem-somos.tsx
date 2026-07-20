@@ -71,7 +71,7 @@ function QuemSomos() {
 
 
       {/* HISTÓRIA */}
-      <section className="py-24 md:py-36">
+      <section className="cv-auto py-24 md:py-36">
         <div className="container-page grid gap-12 md:grid-cols-[1.15fr_0.85fr] md:items-center md:gap-20">
           <Reveal>
             <SectionHeader
@@ -98,7 +98,7 @@ function QuemSomos() {
 
 
       {/* FORÇA DA ESTRUTURA */}
-      <section className="grid-texture-invert blue-glow bg-primary py-24 text-white md:py-36">
+      <section className="grid-texture-invert blue-glow cv-auto bg-primary py-24 text-white md:py-36">
         <div className="container-page">
           <Reveal>
             <SectionHeader
@@ -114,7 +114,7 @@ function QuemSomos() {
       </section>
 
       {/* MANIFESTO */}
-      <section className="grid-texture py-24 md:py-36">
+      <section className="grid-texture cv-auto py-24 md:py-36">
         <div className="container-page">
           <Reveal>
             <SectionHeader
@@ -147,7 +147,7 @@ function QuemSomos() {
       </section>
 
       {/* VALORES */}
-      <section className="bg-surface py-24 md:py-36">
+      <section className="bg-surface cv-auto py-24 md:py-36">
         <div className="container-page">
           <Reveal>
             <SectionHeader
@@ -170,7 +170,7 @@ function QuemSomos() {
       </section>
 
       {/* CTA FINAL */}
-      <section className="grid-texture py-24 md:py-36">
+      <section className="grid-texture cv-auto py-24 md:py-36">
         <div className="container-page">
           <Reveal className="mx-auto max-w-3xl text-center">
             <SectionHeader
