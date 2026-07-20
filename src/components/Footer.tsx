@@ -4,7 +4,7 @@ import logoBranca from "@/assets/logo-heydt-branca.png.asset.json";
 
 export function Footer() {
   return (
-    <footer className="mt-24 bg-primary text-primary-foreground">
+    <footer className="bg-primary text-primary-foreground">
       <div className="container-page grid gap-12 py-16 md:grid-cols-[1.3fr_1fr_1fr] md:py-24">
         <div className="max-w-sm">
           <img
