@@ -118,17 +118,12 @@ export function PortfolioGallery() {
 
   return (
     <>
-      <div
-        className="mt-16 grid grid-cols-2 gap-2 md:mt-24 md:grid-cols-4 md:gap-3"
-        style={{
-          gridAutoRows: "minmax(0, 150px)",
-        }}
-      >
+      <div className="mt-16 grid grid-cols-2 gap-2 [grid-auto-rows:150px] md:mt-24 md:grid-cols-4 md:gap-3 md:[grid-auto-rows:200px] xl:[grid-auto-rows:230px]">
         {items.map((item, i) => (
           <Reveal
             key={item.url}
             delay={(i % 4) * 60}
-            className={`group relative overflow-hidden rounded-xl bg-muted ${spanFor(i, items.length)} md:[grid-auto-rows:minmax(0,220px)]`}
+            className={`group relative overflow-hidden rounded-xl bg-muted ${spanFor(i, items.length)}`}
           >
             <img
               src={item.url}
