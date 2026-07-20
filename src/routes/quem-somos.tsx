@@ -46,9 +46,11 @@ function QuemSomos() {
         eyebrow="Quem somos · Desde 1978"
         title={
           <>
-            <span className="block whitespace-nowrap md:inline md:whitespace-nowrap">A tradição de quem</span>
-            <span className="block whitespace-nowrap md:inline md:whitespace-nowrap">molda </span>
-            <span className="block whitespace-nowrap md:block md:whitespace-nowrap">
+            <span className="block md:whitespace-nowrap">
+              A tradição de quem <br className="md:hidden" />
+              molda
+            </span>
+            <span className="block whitespace-nowrap md:whitespace-nowrap">
               o alto padrão{" "}
               <em className="font-display italic text-champagne">há 47 anos.</em>
             </span>
