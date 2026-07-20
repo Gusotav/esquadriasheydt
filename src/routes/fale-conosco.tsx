@@ -94,7 +94,7 @@ function FaleConosco() {
                     href={c.href}
                     target="_blank"
                     rel="noreferrer"
-                    className="font-display text-xl text-foreground link-underline md:text-2xl"
+                    className="text-lg text-foreground link-underline md:text-xl"
                   >
                     {c.value}
                   </a>
@@ -104,7 +104,7 @@ function FaleConosco() {
 
             <div className="mt-10 rounded-2xl border border-border bg-surface p-8">
               <span className="eyebrow text-primary">Sede HEYDT</span>
-              <p className="mt-4 font-display text-xl leading-snug text-foreground">
+              <p className="mt-4 text-lg leading-snug text-foreground">
                 R. Paulino Francisco de Oliveira, 316
                 <br />
                 Maravilha/SC — CEP 89874-000
