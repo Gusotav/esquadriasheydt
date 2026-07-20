@@ -183,9 +183,14 @@ export function PortfolioGallery() {
                 src={item.url}
                 alt={item.alt}
                 loading={i < 4 ? "eager" : "lazy"}
+                fetchPriority={i < 4 ? "high" : "low"}
                 decoding="async"
+                sizes="(min-width: 768px) 25vw, 50vw"
+                width={800}
+                height={600}
                 className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1200ms] group-hover:scale-[1.04]"
               />
+
               {/* Indicativo sutil — sempre visível no mobile, só no hover no desktop */}
               <span
                 aria-hidden

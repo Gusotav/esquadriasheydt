@@ -24,13 +24,22 @@ export function Navbar({ hideOverHero = false }: NavbarProps) {
       setScrolled(true);
       return;
     }
-    const onScroll = () => {
+    let raf = 0;
+    const check = () => {
+      raf = 0;
       const threshold = Math.max(window.innerHeight * 0.85, 500);
       setScrolled(window.scrollY > threshold);
     };
-    onScroll();
+    const onScroll = () => {
+      if (raf) return;
+      raf = requestAnimationFrame(check);
+    };
+    check();
     window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      if (raf) cancelAnimationFrame(raf);
+    };
   }, [hideOverHero]);
 
   useEffect(() => {

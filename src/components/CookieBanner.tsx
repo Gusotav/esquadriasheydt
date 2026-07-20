@@ -9,15 +9,29 @@ export function CookieBanner() {
 
   useEffect(() => {
     if (typeof window === "undefined") return;
-    try {
-      const stored = window.localStorage.getItem(STORAGE_KEY);
-      if (!stored) {
-        const t = window.setTimeout(() => setVisible(true), 600);
-        return () => window.clearTimeout(t);
+    let handle: number | undefined;
+    let idle: number | undefined;
+    const show = () => {
+      try {
+        const stored = window.localStorage.getItem(STORAGE_KEY);
+        if (!stored) {
+          handle = window.setTimeout(() => setVisible(true), 1200);
+        }
+      } catch {
+        setVisible(true);
       }
-    } catch {
-      setVisible(true);
+    };
+    // Adia para depois do primeiro paint / idle — não bloqueia LCP.
+    const ric = (window as unknown as { requestIdleCallback?: (cb: () => void, opts?: { timeout: number }) => number }).requestIdleCallback;
+    if (ric) {
+      idle = ric(show, { timeout: 2500 });
+    } else {
+      handle = window.setTimeout(show, 1500);
     }
+    return () => {
+      if (handle) window.clearTimeout(handle);
+      if (idle) (window as unknown as { cancelIdleCallback?: (id: number) => void }).cancelIdleCallback?.(idle);
+    };
   }, []);
 
   const dismiss = (value: "accepted" | "dismissed") => {

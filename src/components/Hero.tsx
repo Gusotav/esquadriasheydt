@@ -32,11 +32,18 @@ export function Hero({
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
+
+    // Skip mouse parallax on touch/coarse pointers e reduced motion.
+    const finePointer = window.matchMedia?.("(hover: hover) and (pointer: fine)").matches ?? false;
+    const reduced = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches ?? false;
+
     let raf = 0;
+    let rect = el.getBoundingClientRect();
     let mx = 0, my = 0, tx = 0, ty = 0;
 
+    const onResize = () => { rect = el.getBoundingClientRect(); };
+
     const onMove = (e: MouseEvent) => {
-      const rect = el.getBoundingClientRect();
       mx = (e.clientX - rect.left) / rect.width - 0.5;
       my = (e.clientY - rect.top) / rect.height - 0.5;
       if (!raf) raf = requestAnimationFrame(tick);
@@ -61,21 +68,39 @@ export function Hero({
       }
     };
 
+    // Parallax de scroll leve — rAF throttled, apenas enquanto o hero está visível.
+    let scrollRaf = 0;
+    let visible = true;
+    const io = "IntersectionObserver" in window
+      ? new IntersectionObserver(([e]) => { visible = e.isIntersecting; }, { threshold: 0 })
+      : null;
+    io?.observe(el);
+
     const onScroll = () => {
-      const y = window.scrollY;
-      if (y < window.innerHeight && imgRef.current) {
-        imgRef.current.style.setProperty("--py", `${y * 0.15}px`);
-      }
+      if (scrollRaf || !visible || reduced) return;
+      scrollRaf = requestAnimationFrame(() => {
+        scrollRaf = 0;
+        const y = window.scrollY;
+        if (y < window.innerHeight && imgRef.current) {
+          imgRef.current.style.setProperty("--py", `${y * 0.15}px`);
+        }
+      });
     };
 
-    el.addEventListener("mousemove", onMove);
-    el.addEventListener("mouseleave", onLeave);
+    if (finePointer && !reduced) {
+      el.addEventListener("mousemove", onMove, { passive: true });
+      el.addEventListener("mouseleave", onLeave, { passive: true });
+      window.addEventListener("resize", onResize, { passive: true });
+    }
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => {
       el.removeEventListener("mousemove", onMove);
       el.removeEventListener("mouseleave", onLeave);
+      window.removeEventListener("resize", onResize);
       window.removeEventListener("scroll", onScroll);
+      io?.disconnect();
       if (raf) cancelAnimationFrame(raf);
+      if (scrollRaf) cancelAnimationFrame(scrollRaf);
     };
   }, []);
 
@@ -98,6 +123,7 @@ export function Hero({
             style={{ transform: "translateY(var(--py, 0px))" }}
             loading="eager"
             fetchPriority="high"
+            decoding="async"
             width={1920}
             height={1080}
           />
@@ -105,50 +131,14 @@ export function Hero({
       </div>
 
 
-      {/* Camadas de overlay sofisticadas — azul escuro da marca */}
-      {/* 1. Sombra inferior profunda para ancorar o texto */}
+      {/* Overlay unificado — 1 camada só, gradiente composto (era 5 divs) */}
       <div
         className="absolute inset-0 -z-10"
         style={{
           background:
-            "linear-gradient(180deg, oklch(0.36 0.14 255 / 0.15) 0%, oklch(0.36 0.14 255 / 0.38) 45%, oklch(0.2 0.08 255 / 0.9) 100%)",
+            "linear-gradient(180deg, oklch(0.12 0.05 255 / 0.55) 0%, oklch(0.36 0.14 255 / 0) 18%, oklch(0.36 0.14 255 / 0.28) 55%, oklch(0.2 0.08 255 / 0.9) 100%), linear-gradient(90deg, oklch(0.2 0.08 255 / 0.78) 0%, oklch(0.36 0.14 255 / 0.32) 45%, oklch(0.36 0.14 255 / 0) 80%)",
         }}
       />
-      {/* 2. Vinheta lateral esquerda para legibilidade do bloco de texto */}
-      <div
-        className="absolute inset-y-0 left-0 -z-10 w-3/4"
-        style={{
-          background:
-            "linear-gradient(90deg, oklch(0.2 0.08 255 / 0.82) 0%, oklch(0.36 0.14 255 / 0.38) 45%, oklch(0.36 0.14 255 / 0) 100%)",
-        }}
-      />
-      {/* 3. Vinheta radial sutil de profundidade azulada */}
-      <div
-        className="absolute inset-0 -z-10"
-        style={{
-          background:
-            "radial-gradient(120% 90% at 20% 70%, oklch(0.15 0.06 255 / 0.45) 0%, oklch(0.36 0.14 255 / 0) 60%)",
-        }}
-      />
-      {/* 4. Fade discreto no topo para respiro atrás da navbar */}
-      <div
-        className="absolute inset-x-0 top-0 -z-10 h-40"
-        style={{
-          background:
-            "linear-gradient(180deg, oklch(0.12 0.05 255 / 0.65) 0%, oklch(0.36 0.14 255 / 0) 100%)",
-        }}
-      />
-      {/* 5. Grão sutil para textura editorial */}
-      <div
-        className="pointer-events-none absolute inset-0 -z-10 opacity-[0.08] mix-blend-overlay"
-        style={{
-          backgroundImage:
-            "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>\")",
-        }}
-      />
-
-      {/* Top bar removida — a Navbar do site já ocupa esse espaço sobre o hero */}
-
 
       <div
         ref={contentRef}
