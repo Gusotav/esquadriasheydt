@@ -156,9 +156,11 @@ export function PortfolioGallery() {
     window.addEventListener("keydown", onKey);
     const prevOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
+    document.documentElement.classList.add("lightbox-open");
     return () => {
       window.removeEventListener("keydown", onKey);
       document.body.style.overflow = prevOverflow;
+      document.documentElement.classList.remove("lightbox-open");
     };
   }, [lightbox, close, prev, next]);
 
