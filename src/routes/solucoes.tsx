@@ -63,8 +63,8 @@ function Solucoes() {
         eyebrow="Soluções HEYDT"
         title={
           <>
-            <span className="block whitespace-nowrap">Soluções para projetos</span>
-            <span className="block whitespace-nowrap">
+            <span className="block md:whitespace-nowrap">Soluções para projetos</span>
+            <span className="block md:whitespace-nowrap">
               que <em className="font-display italic text-champagne">exigem mais.</em>
             </span>
           </>
