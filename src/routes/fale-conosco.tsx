@@ -59,7 +59,7 @@ function FaleConosco() {
           <Reveal>
             <SectionHeader
               eyebrow="Atendimento consultivo"
-              title={<>Um especialista <em className="italic">para o seu projeto.</em></>}
+              title={<>Um especialista <em className="italic">para o<br className="md:hidden" /> seu projeto.</em></>}
               subtitle="Preencha o formulário e receba o retorno da nossa equipe consultiva."
             />
             <div className="mt-10 rounded-2xl border border-border bg-card p-8 md:p-12">
