@@ -170,6 +170,9 @@
   text-transform: uppercase;
   font-weight: 500;
   border-radius: 999px;
+  white-space: nowrap;
+  text-align: center;
+  line-height: 1;
   transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1),
               background-color 0.3s ease, box-shadow 0.3s ease;
   box-shadow: 0 12px 30px -18px color-mix(in oklab, var(--color-primary) 65%, transparent);
@@ -177,11 +180,17 @@
     background: color-mix(in oklab, var(--color-primary) 88%, black);
     transform: translateY(-2px);
   }
+  @media (max-width: 767px) {
+    padding: 0.85rem 1.2rem;
+    font-size: 0.74rem;
+    letter-spacing: 0.06em;
+  }
 }
 
 @utility btn-ghost {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 0.55rem;
   padding: 0.95rem 1.4rem;
   color: var(--color-foreground);
@@ -190,11 +199,19 @@
   text-transform: uppercase;
   font-weight: 500;
   border-radius: 999px;
+  white-space: nowrap;
+  text-align: center;
+  line-height: 1;
   border: 1px solid var(--color-border);
   transition: background 0.3s ease, border-color 0.3s ease;
   &:hover {
     background: var(--color-surface);
     border-color: color-mix(in oklab, var(--color-primary) 40%, var(--color-border));
+  }
+  @media (max-width: 767px) {
+    padding: 0.85rem 1.1rem;
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
   }
 }
 
