@@ -109,9 +109,9 @@ function FaleConosco() {
                       <span className="mt-0.5 inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-border bg-surface text-primary transition-colors group-hover:border-primary/30 group-hover:bg-primary/5">
                         <Icon className="h-4 w-4" aria-hidden="true" />
                       </span>
-                      <div className="flex flex-col gap-1">
+                      <div className="flex min-w-0 flex-1 flex-col gap-1">
                         <span className="eyebrow">{c.label}</span>
-                        <span className="text-lg text-foreground link-underline md:text-xl">
+                        <span className="break-all text-base text-foreground link-underline md:text-xl">
                           {c.value}
                         </span>
                       </div>
