@@ -2,7 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/SiteLayout";
 import { SectionHeader } from "@/components/SectionHeader";
 import { Reveal } from "@/components/Reveal";
-import { ValoresList } from "@/components/ValoresList";
+
 import { CountUpStats } from "@/components/CountUpStats";
 import heroInterior from "@/assets/obra-interior-01.jpg.asset.json";
 import videoHistoria from "@/assets/quem-somos-dobra-2.mp4.asset.json";
@@ -153,8 +153,17 @@ function QuemSomos() {
               title={<>Os princípios que <em className="italic">não negociamos.</em></>}
             />
           </Reveal>
-          <ValoresList items={valores} />
-
+          <ul className="mt-16 grid gap-px overflow-hidden rounded-2xl border border-border bg-border md:grid-cols-2 lg:grid-cols-4">
+            {valores.map((v) => (
+              <li key={v.n} className="bg-background p-8 md:p-10">
+                <span className="font-display text-2xl text-primary">{v.n}</span>
+                <h3 className="mt-6 font-display text-lg leading-tight text-foreground md:text-xl">
+                  {v.t}
+                </h3>
+                <p className="mt-3 text-sm text-muted-foreground">{v.d}</p>
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
 
