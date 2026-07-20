@@ -55,6 +55,7 @@ function QuemSomos() {
         }
         subtitle="Nossa história é construída sobre a precisão da engenharia, a robustez da nossa indústria e o compromisso inegociável com o conforto da sua família."
         imageUrl={heroQuemSomos.url}
+        imageUrlMobile={heroMobileImg.url}
         imageAlt="Equipe HEYDT Esquadrias na sede em Maravilha/SC"
         proofs={[
           "Fundada em 1978, em Maravilha/SC",
