@@ -210,7 +210,7 @@ export function PortfolioGallery() {
             onClick={() => setExpanded((v) => !v)}
             className="btn-primary"
           >
-            {expanded ? "Recolher galeria" : "Explorar nosso Portfólio Completo"}
+            {expanded ? "Recolher galeria" : "Ver portfólio completo"}
           </button>
         </Reveal>
       )}

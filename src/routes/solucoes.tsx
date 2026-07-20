@@ -106,7 +106,7 @@ function Solucoes() {
                   <div className="absolute inset-0 bg-gradient-to-t from-primary/70 via-transparent to-transparent opacity-100 transition-opacity duration-500 md:opacity-0 md:group-hover:opacity-100" />
                   <div className="absolute inset-x-0 bottom-0 translate-y-0 p-6 opacity-100 transition-all duration-500 md:translate-y-4 md:opacity-0 md:group-hover:translate-y-0 md:group-hover:opacity-100">
                     <Link to="/fale-conosco" className="btn-primary bg-white text-primary hover:bg-white/90">
-                      Fale agora com especialista
+                      Falar com especialista
                     </Link>
                   </div>
                 </div>
@@ -121,7 +121,7 @@ function Solucoes() {
                 </h2>
                 <p className="mt-5 text-base text-muted-foreground md:text-lg">{s.desc}</p>
                 <div className="mt-8 flex flex-wrap gap-3">
-                  <Link to="/fale-conosco" className="btn-primary">Fale agora com especialista</Link>
+                  <Link to="/fale-conosco" className="btn-primary">Falar com especialista</Link>
                   <a href={`#${solucoes[(i + 1) % solucoes.length].id}`} className="btn-ghost">
                     Próxima linha
                   </a>
@@ -145,7 +145,7 @@ function Solucoes() {
           </Reveal>
           <Reveal delay={100} className="flex md:justify-end">
             <Link to="/fale-conosco" className="btn-primary bg-white text-primary hover:bg-white/90">
-              Solicitar Orçamento Exclusivo
+              Solicitar orçamento
             </Link>
           </Reveal>
         </div>
