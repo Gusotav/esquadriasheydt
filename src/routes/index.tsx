@@ -73,10 +73,11 @@ function HomePage() {
         eyebrow="HEYDT · Esquadrias · Fachadas · Vidros"
         title={
           <>
-            O conforto e a sofisticação
-            <br />
-            que o seu projeto{" "}
-            <em className="font-display italic text-champagne">exige.</em>
+            <span className="block whitespace-nowrap">O conforto e a sofisticação</span>
+            <span className="block whitespace-nowrap">
+              que o seu projeto{" "}
+              <em className="font-display italic text-champagne">exige.</em>
+            </span>
           </>
         }
         subtitle="Há mais de 47 anos, a HEYDT entrega engenharia, segurança e acabamento impecável em esquadrias e fachadas para as obras mais exigentes do Oeste catarinense."
