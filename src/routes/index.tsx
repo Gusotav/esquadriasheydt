@@ -274,33 +274,3 @@ function HomePage() {
     </SiteLayout>
   );
 }
-
-function PortfolioPlaceholder({ label, index }: { label: string; index: number }) {
-  return (
-    <div className="group relative h-full w-full overflow-hidden rounded-xl border border-border bg-muted">
-      <div
-        className="absolute inset-0 transition-transform duration-[1200ms] group-hover:scale-[1.03]"
-        style={{
-          background:
-            "radial-gradient(120% 80% at 20% 10%, oklch(0.98 0.01 240) 0%, oklch(0.9 0.03 240) 40%, oklch(0.6 0.09 250) 100%)",
-        }}
-      />
-      <div
-        className="absolute inset-0 opacity-30 mix-blend-overlay"
-        style={{
-          backgroundImage:
-            "repeating-linear-gradient(90deg, transparent 0 40px, oklch(0.2 0.05 250 / 0.15) 40px 41px)",
-        }}
-      />
-      <div className="absolute inset-x-0 bottom-0 flex items-end justify-between p-6">
-        <div>
-          <span className="eyebrow text-primary">Obra {String(index).padStart(2, "0")}</span>
-          <p className="mt-1 font-display text-xl text-foreground">{label}</p>
-        </div>
-        <span className="text-[10px] uppercase tracking-[0.25em] text-muted-foreground/70">
-          Em breve
-        </span>
-      </div>
-    </div>
-  );
-}
