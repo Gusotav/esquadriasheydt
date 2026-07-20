@@ -5,6 +5,7 @@ import { Reveal } from "@/components/Reveal";
 import { LeadForm } from "@/components/LeadForm";
 import { Hero } from "@/components/Hero";
 import heroFaleConosco from "@/assets/hero-fale-conosco.jpg.asset.json";
+import heroMobileImg from "@/assets/galeria/portfolio-17.webp.asset.json";
 import { Phone, Mail, Instagram, MapPin } from "lucide-react";
 
 export const Route = createFileRoute("/fale-conosco")({
