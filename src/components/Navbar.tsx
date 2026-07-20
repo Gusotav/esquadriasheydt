@@ -1,0 +1,132 @@
+import { Link, useRouterState } from "@tanstack/react-router";
+import { useEffect, useState } from "react";
+import logo from "@/assets/logo-heydt.png.asset.json";
+
+const links = [
+  { to: "/", label: "Home" },
+  { to: "/quem-somos", label: "Quem Somos" },
+  { to: "/solucoes", label: "Soluções" },
+  { to: "/fale-conosco", label: "Fale Conosco" },
+] as const;
+
+interface NavbarProps {
+  /** When true, navbar stays hidden until the user scrolls past ~90vh (hero) */
+  hideOverHero?: boolean;
+}
+
+export function Navbar({ hideOverHero = false }: NavbarProps) {
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
+  const [visible, setVisible] = useState(!hideOverHero);
+  const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    if (!hideOverHero) {
+      setVisible(true);
+      return;
+    }
+    const onScroll = () => {
+      const threshold = Math.max(window.innerHeight * 0.85, 500);
+      setVisible(window.scrollY > threshold);
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, [hideOverHero]);
+
+  useEffect(() => {
+    setOpen(false);
+  }, [pathname]);
+
+  return (
+    <header
+      className={`sticky top-0 z-50 border-b border-border/60 bg-background/85 backdrop-blur-md transition-all duration-500 ${
+        visible ? "translate-y-0 opacity-100" : "-translate-y-full opacity-0 pointer-events-none"
+      }`}
+      aria-hidden={!visible}
+    >
+      <div className="container-page flex h-16 items-center justify-between gap-6 md:h-20">
+        <Link to="/" className="flex shrink-0 items-center" aria-label="HEYDT Esquadrias — Home">
+          <img
+            src={logo.url}
+            alt="HEYDT Esquadrias"
+            width={140}
+            height={44}
+            className="h-8 w-auto md:h-10"
+          />
+        </Link>
+
+        <nav className="hidden items-center gap-10 md:flex" aria-label="Principal">
+          {links.map((l) => {
+            const active = pathname === l.to;
+            return (
+              <Link
+                key={l.to}
+                to={l.to}
+                className={`text-[13px] tracking-[0.16em] uppercase transition-colors link-underline ${
+                  active ? "text-primary" : "text-foreground/75 hover:text-primary"
+                }`}
+              >
+                {l.label}
+              </Link>
+            );
+          })}
+        </nav>
+
+        <Link
+          to="/fale-conosco"
+          className="hidden shrink-0 btn-primary text-[11px] md:inline-flex"
+        >
+          Falar com Especialista
+        </Link>
+
+        <button
+          type="button"
+          className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-border md:hidden"
+          onClick={() => setOpen((v) => !v)}
+          aria-label="Abrir menu"
+          aria-expanded={open}
+        >
+          <span className="relative block h-3 w-4">
+            <span
+              className={`absolute left-0 top-0 h-px w-full bg-foreground transition-transform duration-300 ${
+                open ? "translate-y-[6px] rotate-45" : ""
+              }`}
+            />
+            <span
+              className={`absolute left-0 top-1/2 h-px w-full bg-foreground transition-opacity duration-300 ${
+                open ? "opacity-0" : "opacity-100"
+              }`}
+            />
+            <span
+              className={`absolute bottom-0 left-0 h-px w-full bg-foreground transition-transform duration-300 ${
+                open ? "-translate-y-[6px] -rotate-45" : ""
+              }`}
+            />
+          </span>
+        </button>
+      </div>
+
+      {/* Mobile drawer */}
+      <div
+        className={`overflow-hidden border-t border-border/60 bg-background md:hidden transition-[max-height,opacity] duration-500 ${
+          open ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+        }`}
+      >
+        <nav className="container-page flex flex-col gap-1 py-4" aria-label="Mobile">
+          {links.map((l) => (
+            <Link
+              key={l.to}
+              to={l.to}
+              className="border-b border-border/40 py-3 text-sm tracking-[0.14em] uppercase text-foreground/80"
+            >
+              {l.label}
+            </Link>
+          ))}
+          <Link to="/fale-conosco" className="btn-primary mt-4 justify-center text-[11px]">
+            Falar com Especialista
+          </Link>
+        </nav>
+      </div>
+    </header>
+  );
+}
