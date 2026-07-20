@@ -94,7 +94,7 @@ function FaleConosco() {
                     href={c.href}
                     target="_blank"
                     rel="noreferrer"
-                    className="font-display text-xl text-foreground link-underline md:text-2xl"
+                    className="text-lg text-foreground link-underline md:text-xl"
                   >
                     {c.value}
                   </a>
