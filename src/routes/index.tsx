@@ -77,8 +77,13 @@ function HomePage() {
         eyebrow="HEYDT · Esquadrias · Fachadas · Vidros"
         title={
           <>
-            <span className="block md:whitespace-nowrap">O conforto e a sofisticação</span>
-            <span className="block md:whitespace-nowrap">
+            <span className="block md:hidden">O conforto e a</span>
+            <span className="block md:hidden">sofisticação que o</span>
+            <span className="block md:hidden">
+              seu projeto <em className="font-display italic text-champagne">exige.</em>
+            </span>
+            <span className="hidden md:block md:whitespace-nowrap">O conforto e a sofisticação</span>
+            <span className="hidden md:block md:whitespace-nowrap">
               que o seu projeto{" "}
               <em className="font-display italic text-champagne">exige.</em>
             </span>
