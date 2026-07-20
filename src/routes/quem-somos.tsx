@@ -159,17 +159,8 @@ function QuemSomos() {
               title={<>Os princípios que <em className="italic">não negociamos.</em></>}
             />
           </Reveal>
-          <ul className="mt-16 grid gap-px overflow-hidden rounded-2xl border border-border bg-border md:grid-cols-2 lg:grid-cols-4">
-            {valores.map((v, i) => (
-              <Reveal as="li" key={v.n} delay={i * 80} className="bg-background p-8 md:p-10">
-                <span className="font-display text-2xl text-primary">{v.n}</span>
-                <h3 className="mt-6 font-display text-lg leading-tight text-foreground md:text-xl">
-                  {v.t}
-                </h3>
-                <p className="mt-3 text-sm text-muted-foreground">{v.d}</p>
-              </Reveal>
-            ))}
-          </ul>
+          <ValoresList items={valores} />
+
         </div>
       </section>
 
