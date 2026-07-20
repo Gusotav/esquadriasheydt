@@ -262,6 +262,20 @@
   }
 }
 
+@utility blue-glow {
+  position: relative;
+  isolation: isolate;
+  &::before {
+    content: "";
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse at 25% 15%, oklch(0.48 0.14 255 / 0.42) 0%, transparent 55%),
+      radial-gradient(ellipse at 80% 85%, oklch(0.42 0.14 255 / 0.32) 0%, transparent 60%);
+    pointer-events: none;
+    z-index: -1;
+  }
+}
+
 
 
 
