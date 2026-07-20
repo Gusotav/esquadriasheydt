@@ -1,4 +1,5 @@
 import { Link } from "@tanstack/react-router";
+import { Phone, Mail, Instagram, MapPin } from "lucide-react";
 import logoBranca from "@/assets/logo-heydt-branca.png.asset.json";
 
 export function Footer() {
