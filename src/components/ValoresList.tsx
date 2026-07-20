@@ -82,7 +82,7 @@ export function ValoresList({ items }: { items: Valor[] }) {
             <span
               aria-hidden
               className={[
-                "pointer-events-none absolute inset-x-0 bottom-0 h-[2px] origin-left bg-[hsl(var(--champagne))] transition-transform ease-linear",
+                "pointer-events-none absolute inset-x-0 bottom-0 h-[2px] origin-left bg-champagne transition-transform ease-linear",
                 isActive ? "scale-x-100" : "scale-x-0",
               ].join(" ")}
               style={{ transitionDuration: isActive ? `${HIGHLIGHT_MS}ms` : "300ms" }}
