@@ -73,7 +73,9 @@ function HomePage() {
         eyebrow="HEYDT · Esquadrias · Fachadas · Vidros"
         title={
           <>
-            O conforto e a sofisticação que o seu projeto de alto padrão{" "}
+            O conforto e a sofisticação
+            <br />
+            que o seu projeto{" "}
             <em className="font-display italic text-champagne">exige.</em>
           </>
         }
