@@ -44,18 +44,29 @@ const ALL: Item[] = [
 
 const INITIAL = 8;
 
+// Bento mosaic para exatamente 8 tiles — 4 cols × 4 rows, sem espaços vazios.
+const BENTO = [
+  "col-span-2 row-span-2 md:col-span-2 md:row-span-2", // 1 — destaque grande
+  "col-span-2 row-span-1 md:col-span-1 md:row-span-1", // 2
+  "col-span-2 row-span-2 md:col-span-1 md:row-span-2", // 3 — portrait
+  "col-span-2 row-span-1 md:col-span-1 md:row-span-1", // 4
+  "col-span-2 row-span-2 md:col-span-1 md:row-span-2", // 5 — portrait
+  "col-span-2 row-span-1 md:col-span-2 md:row-span-1", // 6 — landscape
+  "col-span-2 row-span-2 md:col-span-1 md:row-span-2", // 7 — portrait
+  "col-span-2 row-span-1 md:col-span-2 md:row-span-1", // 8 — landscape
+];
+
 export function PortfolioGallery() {
   const [expanded, setExpanded] = useState(false);
-  const items = expanded ? ALL : ALL.slice(0, INITIAL);
 
   return (
     <>
-      <div className="mt-16 grid grid-cols-2 gap-2 md:mt-24 md:grid-cols-4 md:gap-3">
-        {items.map((item, i) => (
+      <div className="mt-16 grid grid-cols-4 grid-rows-8 gap-2 md:mt-24 md:aspect-[5/4] md:grid-cols-4 md:grid-rows-4 md:gap-3">
+        {ALL.slice(0, INITIAL).map((item, i) => (
           <Reveal
             key={item.url}
             delay={(i % 4) * 80}
-            className="group relative aspect-square overflow-hidden rounded-xl bg-muted"
+            className={`group relative overflow-hidden rounded-xl bg-muted ${BENTO[i]}`}
           >
             <img
               src={item.url}
@@ -67,6 +78,26 @@ export function PortfolioGallery() {
           </Reveal>
         ))}
       </div>
+
+      {expanded && (
+        <div className="mt-3 grid grid-cols-2 gap-2 md:mt-3 md:grid-cols-4 md:gap-3">
+          {ALL.slice(INITIAL).map((item, i) => (
+            <Reveal
+              key={item.url}
+              delay={(i % 4) * 80}
+              className="group relative aspect-square overflow-hidden rounded-xl bg-muted"
+            >
+              <img
+                src={item.url}
+                alt={item.alt}
+                loading="lazy"
+                decoding="async"
+                className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1200ms] group-hover:scale-[1.04]"
+              />
+            </Reveal>
+          ))}
+        </div>
+      )}
 
       {ALL.length > INITIAL && (
         <Reveal className="mt-14 flex justify-center">
