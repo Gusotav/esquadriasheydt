@@ -5,6 +5,7 @@ import { SectionHeader } from "@/components/SectionHeader";
 import { Reveal } from "@/components/Reveal";
 import { LeadForm } from "@/components/LeadForm";
 import { PortfolioGallery } from "@/components/PortfolioGallery";
+import { SolucoesGrid } from "@/components/SolucoesGrid";
 
 import videoDobra4 from "@/assets/home-dobra-4.mp4.asset.json";
 
@@ -148,26 +149,7 @@ function HomePage() {
             />
           </Reveal>
 
-          <div className="mt-16 grid gap-px overflow-hidden rounded-2xl border border-border bg-border md:grid-cols-2">
-            {solucoes.map((s, i) => (
-              <Reveal key={s.n} delay={i * 90} className="group bg-background p-8 md:p-12 transition-colors hover:bg-card">
-                <div className="flex items-baseline justify-between">
-                  <span className="eyebrow text-primary">{s.tag}</span>
-                  <span className="font-display text-2xl text-muted-foreground/60">{s.n}</span>
-                </div>
-                <h3 className="mt-8 font-display text-2xl leading-tight text-foreground md:text-3xl">
-                  {s.title}
-                </h3>
-                <p className="mt-4 max-w-md text-sm text-muted-foreground md:text-base">{s.desc}</p>
-                <Link
-                  to="/solucoes"
-                  className="mt-8 inline-flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-primary link-underline"
-                >
-                  Conhecer linha
-                </Link>
-              </Reveal>
-            ))}
-          </div>
+          <SolucoesGrid items={solucoes} />
 
           <Reveal className="mt-12 text-center">
             <Link to="/fale-conosco" className="btn-primary">
