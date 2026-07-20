@@ -63,7 +63,7 @@ export function Navbar({ hideOverHero = false }: NavbarProps) {
                 key={l.to}
                 to={l.to}
                 className={`text-[13px] tracking-[0.16em] uppercase transition-colors link-underline ${
-                  active ? "text-primary" : "text-foreground/75 hover:text-primary"
+                  active ? "text-white" : "text-white/75 hover:text-white"
                 }`}
               >
                 {l.label}
