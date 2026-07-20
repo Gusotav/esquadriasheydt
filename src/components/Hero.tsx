@@ -89,17 +89,21 @@ export function Hero({
         className="absolute inset-0 -z-10 will-change-transform"
         style={{ transform: "scale(1.06)" }}
       >
-        <img
-          src={imageUrl}
-          alt={imageAlt}
-          className="h-full w-full object-cover"
-          style={{ transform: "translateY(var(--py, 0px))" }}
-          loading="eager"
-          fetchPriority="high"
-          width={1920}
-          height={1080}
-        />
+        <picture>
+          <source media="(max-width: 767px)" srcSet={imageUrlMobile} />
+          <img
+            src={imageUrl}
+            alt={imageAlt}
+            className="h-full w-full object-cover"
+            style={{ transform: "translateY(var(--py, 0px))" }}
+            loading="eager"
+            fetchPriority="high"
+            width={1920}
+            height={1080}
+          />
+        </picture>
       </div>
+
 
       {/* Camadas de overlay sofisticadas — azul escuro da marca */}
       {/* 1. Sombra inferior profunda para ancorar o texto */}
