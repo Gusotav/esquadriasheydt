@@ -72,6 +72,7 @@ function Solucoes() {
         }
         subtitle="Do conforto térmico e acústico da sua residência à imponência estrutural das fachadas comerciais. Reunimos mais de 47 anos de engenharia para integrar estética, segurança e precisão em cada detalhe."
         imageUrl={heroSolucoes.url}
+        imageUrlMobile={heroMobileImg.url}
         imageAlt="Fachada comercial em pele de vidro executada pela HEYDT"
         proofs={[
           "Alumínio, PVC e pele de vidro",
