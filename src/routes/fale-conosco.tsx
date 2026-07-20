@@ -24,31 +24,27 @@ export const Route = createFileRoute("/fale-conosco")({
 
 function FaleConosco() {
   return (
-    <SiteLayout>
-      {/* HERO */}
-      <section className="relative isolate overflow-hidden bg-primary text-white">
-        <div className="absolute inset-0 -z-10">
-          <div
-            className="absolute inset-0"
-            style={{
-              background:
-                "radial-gradient(80% 60% at 20% 20%, oklch(0.55 0.16 240 / 0.6) 0%, transparent 60%), radial-gradient(60% 50% at 80% 100%, oklch(0.82 0.055 80 / 0.18) 0%, transparent 70%), oklch(0.16 0.05 255)",
-            }}
-          />
-        </div>
-        <div className="container-page grid min-h-[55svh] items-end pb-16 pt-32 md:pb-20 md:pt-40">
-          <Reveal className="max-w-3xl">
-            <p className="eyebrow mb-6 text-white/70 hairline">Fale conosco</p>
-            <h1 className="font-display text-[clamp(2.2rem,5vw,4.2rem)] leading-[1.05]">
-              Dê o primeiro passo para o <em className="italic text-champagne">conforto definitivo</em> do seu projeto.
-            </h1>
-            <p className="mt-6 max-w-xl text-base text-white/80 md:text-lg">
-              Fale com nossos especialistas e descubra a solução ideal em alumínio, PVC ou fachadas
-              de vidro para obras que exigem precisão, segurança e um acabamento impecável.
-            </p>
-          </Reveal>
-        </div>
-      </section>
+    <SiteLayout hideNavOverHero>
+      <Hero
+        eyebrow="Fale conosco"
+        title={
+          <>
+            <span className="block whitespace-nowrap">Dê o primeiro passo para</span>
+            <span className="block whitespace-nowrap">
+              o <em className="font-display italic text-champagne">conforto definitivo.</em>
+            </span>
+          </>
+        }
+        subtitle="Fale com nossos especialistas e descubra a solução ideal em alumínio, PVC ou fachadas de vidro para obras que exigem precisão, segurança e um acabamento impecável."
+        imageUrl={heroFaleConosco.url}
+        imageAlt="Residência de alto padrão com esquadrias HEYDT"
+        proofs={[
+          "Atendimento consultivo dedicado",
+          "Retorno em até 1 dia útil",
+          "Sede em Maravilha/SC",
+        ]}
+      />
+
 
       {/* FORMULÁRIO + CONTATOS */}
       <section className="py-20 md:py-28">
