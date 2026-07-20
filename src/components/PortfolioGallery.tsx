@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useCallback, useEffect, useState } from "react";
+import { ChevronLeft, ChevronRight, Expand, X } from "lucide-react";
 import { Reveal } from "@/components/Reveal";
 import p1 from "@/assets/galeria/portfolio-1.webp.asset.json";
 import p2 from "@/assets/galeria/portfolio-2.webp.asset.json";
