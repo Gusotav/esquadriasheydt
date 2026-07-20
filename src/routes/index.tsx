@@ -5,6 +5,7 @@ import { SectionHeader } from "@/components/SectionHeader";
 import { Reveal } from "@/components/Reveal";
 import { LeadForm } from "@/components/LeadForm";
 import { PortfolioGallery } from "@/components/PortfolioGallery";
+import { SolucoesGrid } from "@/components/SolucoesGrid";
 
 import videoDobra4 from "@/assets/home-dobra-4.mp4.asset.json";
 
