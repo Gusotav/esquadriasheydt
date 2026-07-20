@@ -116,15 +116,23 @@ export function Navbar({ hideOverHero = false }: NavbarProps) {
         }`}
       >
         <nav className="container-page flex flex-col gap-1 py-4" aria-label="Mobile">
-          {links.map((l) => (
-            <Link
-              key={l.to}
-              to={l.to}
-              className="border-b border-white/10 py-3 text-sm tracking-[0.14em] uppercase text-white/80"
-            >
-              {l.label}
-            </Link>
-          ))}
+          {links.map((l) => {
+            const active = pathname === l.to;
+            return (
+              <Link
+                key={l.to}
+                to={l.to}
+                className={[
+                  "border-b border-white/10 py-3 text-sm tracking-[0.14em] uppercase transition-colors",
+                  active ? "text-white" : "text-white/80",
+                  active && "pl-3 border-l-2 border-l-champagne border-b-transparent bg-white/5",
+                ].filter(Boolean).join(" ")}
+                aria-current={active ? "page" : undefined}
+              >
+                {l.label}
+              </Link>
+            );
+          })}
           <Link to="/fale-conosco" className="mt-4 inline-flex justify-center rounded-full bg-white px-5 py-3 text-[11px] font-medium uppercase tracking-[0.1em] text-primary transition-colors hover:bg-white/90">
             Falar com Especialista
           </Link>
