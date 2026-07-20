@@ -242,13 +242,13 @@
     content: "";
     position: absolute; inset: 0;
     background-image:
-      linear-gradient(to right, color-mix(in oklab, var(--color-primary) 8%, transparent) 1px, transparent 1px),
-      linear-gradient(to bottom, color-mix(in oklab, var(--color-primary) 8%, transparent) 1px, transparent 1px);
+      linear-gradient(to right, color-mix(in oklab, var(--color-primary) 14%, transparent) 1px, transparent 1px),
+      linear-gradient(to bottom, color-mix(in oklab, var(--color-primary) 14%, transparent) 1px, transparent 1px);
     background-size: 56px 56px;
-    mask-image: radial-gradient(ellipse at center, black 40%, transparent 85%);
+    mask-image: radial-gradient(ellipse at center, black 55%, transparent 92%);
     pointer-events: none;
     z-index: -1;
-    opacity: 0.55;
+    opacity: 0.85;
   }
 }
 
@@ -259,13 +259,13 @@
     content: "";
     position: absolute; inset: 0;
     background-image:
-      linear-gradient(to right, rgba(255,255,255,0.06) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(255,255,255,0.06) 1px, transparent 1px);
+      linear-gradient(to right, rgba(255,255,255,0.11) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255,255,255,0.11) 1px, transparent 1px);
     background-size: 64px 64px;
-    mask-image: radial-gradient(ellipse at center, black 40%, transparent 90%);
+    mask-image: radial-gradient(ellipse at center, black 55%, transparent 95%);
     pointer-events: none;
     z-index: 0;
-    opacity: 0.5;
+    opacity: 0.8;
   }
 }
 
@@ -276,8 +276,8 @@
     content: "";
     position: absolute; inset: 0;
     background:
-      radial-gradient(ellipse at 25% 15%, oklch(0.48 0.14 255 / 0.42) 0%, transparent 55%),
-      radial-gradient(ellipse at 80% 85%, oklch(0.42 0.14 255 / 0.32) 0%, transparent 60%);
+      radial-gradient(ellipse at 25% 15%, oklch(0.48 0.14 255 / 0.65) 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 85%, oklch(0.42 0.14 255 / 0.55) 0%, transparent 65%);
     pointer-events: none;
     z-index: -1;
   }
