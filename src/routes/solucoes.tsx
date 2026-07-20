@@ -98,7 +98,7 @@ function Solucoes() {
       </section>
 
       {/* GRID DE SOLUÇÕES */}
-      <section className="grid-texture py-20 md:py-28">
+      <section className="py-20 md:py-28">
         <div className="container-page space-y-20 md:space-y-32">
           {solucoes.map((s, i) => (
             <article
@@ -148,7 +148,7 @@ function Solucoes() {
       </section>
 
       {/* CTA FINAL */}
-      <section className="bg-primary py-24 text-white md:py-32">
+      <section className="blue-glow bg-primary py-24 text-white md:py-32">
         <div className="container-page grid gap-8 md:grid-cols-[1.4fr_1fr] md:items-end">
           <Reveal>
             <SectionHeader
