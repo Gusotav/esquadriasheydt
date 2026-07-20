@@ -4,6 +4,7 @@ import { Hero } from "@/components/Hero";
 import { SectionHeader } from "@/components/SectionHeader";
 import { Reveal } from "@/components/Reveal";
 import { LeadForm } from "@/components/LeadForm";
+import { PortfolioGallery } from "@/components/PortfolioGallery";
 import videoDobra4 from "@/assets/home-dobra-4.mp4.asset.json";
 
 export const Route = createFileRoute("/")({
@@ -124,26 +125,7 @@ function HomePage() {
             </Reveal>
           </div>
 
-          {/* Editorial grid — placeholders sofisticados */}
-          <div className="mt-16 grid gap-4 md:mt-24 md:grid-cols-12 md:gap-6">
-            {[
-              { span: "md:col-span-7 aspect-[4/5] md:aspect-[16/12]", label: "Residencial · Alto padrão" },
-              { span: "md:col-span-5 aspect-[4/5]", label: "Fachada Glazing" },
-              { span: "md:col-span-5 aspect-[4/5]", label: "Envidraçamento de sacada" },
-              { span: "md:col-span-7 aspect-[4/5] md:aspect-[16/10]", label: "Comercial · Alta performance" },
-              { span: "md:col-span-12 aspect-[16/6]", label: "Projeto assinatura" },
-            ].map((item, i) => (
-              <Reveal key={i} delay={i * 80} className={item.span}>
-                <PortfolioPlaceholder label={item.label} index={i + 1} />
-              </Reveal>
-            ))}
-          </div>
-
-          <Reveal className="mt-14 flex justify-center">
-            <Link to="/solucoes" className="btn-ghost">
-              Explorar nosso Portfólio Completo
-            </Link>
-          </Reveal>
+          <PortfolioGallery />
         </div>
       </section>
 
@@ -290,35 +272,5 @@ function HomePage() {
         </div>
       </section>
     </SiteLayout>
-  );
-}
-
-function PortfolioPlaceholder({ label, index }: { label: string; index: number }) {
-  return (
-    <div className="group relative h-full w-full overflow-hidden rounded-xl border border-border bg-muted">
-      <div
-        className="absolute inset-0 transition-transform duration-[1200ms] group-hover:scale-[1.03]"
-        style={{
-          background:
-            "radial-gradient(120% 80% at 20% 10%, oklch(0.98 0.01 240) 0%, oklch(0.9 0.03 240) 40%, oklch(0.6 0.09 250) 100%)",
-        }}
-      />
-      <div
-        className="absolute inset-0 opacity-30 mix-blend-overlay"
-        style={{
-          backgroundImage:
-            "repeating-linear-gradient(90deg, transparent 0 40px, oklch(0.2 0.05 250 / 0.15) 40px 41px)",
-        }}
-      />
-      <div className="absolute inset-x-0 bottom-0 flex items-end justify-between p-6">
-        <div>
-          <span className="eyebrow text-primary">Obra {String(index).padStart(2, "0")}</span>
-          <p className="mt-1 font-display text-xl text-foreground">{label}</p>
-        </div>
-        <span className="text-[10px] uppercase tracking-[0.25em] text-muted-foreground/70">
-          Em breve
-        </span>
-      </div>
-    </div>
   );
 }
