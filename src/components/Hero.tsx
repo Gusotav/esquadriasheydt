@@ -79,7 +79,7 @@ export function Hero({
   return (
     <section
       ref={ref}
-      className="relative isolate flex min-h-[100svh] items-end overflow-hidden bg-primary text-white"
+      className="relative isolate flex min-h-[100svh] items-center justify-center overflow-hidden bg-primary text-white"
     >
       <div
         ref={imgRef}
@@ -97,46 +97,75 @@ export function Hero({
           height={1200}
         />
       </div>
+
+      {/* Overlay cinematográfico: vinheta radial + degradê vertical para leitura */}
       <div
         className="absolute inset-0 -z-10"
         style={{
-          background: `linear-gradient(180deg, oklch(0.14 0.05 255 / ${overlay * 0.7}) 0%, oklch(0.14 0.05 255 / ${overlay}) 55%, oklch(0.12 0.05 255 / ${Math.min(overlay + 0.25, 0.95)}) 100%)`,
+          background: `radial-gradient(ellipse at 50% 55%, oklch(0.14 0.05 255 / ${overlay * 0.55}) 0%, oklch(0.12 0.05 255 / ${Math.min(overlay + 0.15, 0.9)}) 70%, oklch(0.09 0.04 255 / ${Math.min(overlay + 0.3, 0.96)}) 100%)`,
+        }}
+      />
+      <div
+        className="absolute inset-x-0 top-0 -z-10 h-56"
+        style={{
+          background:
+            "linear-gradient(180deg, oklch(0.10 0.04 255 / 0.85) 0%, oklch(0.10 0.04 255 / 0) 100%)",
+        }}
+      />
+      <div
+        className="absolute inset-x-0 bottom-0 -z-10 h-72"
+        style={{
+          background:
+            "linear-gradient(0deg, oklch(0.08 0.04 255 / 0.85) 0%, oklch(0.08 0.04 255 / 0) 100%)",
         }}
       />
 
       {/* top bar with logo only over hero */}
       <div className="absolute inset-x-0 top-0 z-10">
         <div className="container-page flex h-16 items-center justify-between text-white md:h-20">
-          <span className="eyebrow text-white/70">HEYDT · Desde 1978</span>
+          <span className="eyebrow text-white/85">HEYDT · Desde 1978</span>
           <a
             href="https://wa.me/5549988507286"
             target="_blank"
             rel="noreferrer"
-            className="hidden text-xs uppercase tracking-[0.2em] text-white/85 link-underline sm:inline"
+            className="hidden text-xs uppercase tracking-[0.2em] text-white link-underline sm:inline"
           >
             (49) 98850-7286
           </a>
         </div>
       </div>
 
-      <div ref={contentRef} className="container-page relative z-0 pb-16 pt-40 md:pb-24 md:pt-48">
-        <div className="max-w-3xl">
+      <div
+        ref={contentRef}
+        className="container-page relative z-0 flex w-full flex-col items-center px-6 py-32 text-center md:py-40"
+      >
+        <div className="mx-auto flex max-w-4xl flex-col items-center">
           {eyebrow && (
-            <p className="eyebrow mb-6 text-white/70 hairline">{eyebrow}</p>
+            <p className="mb-8 inline-flex items-center gap-3 rounded-full border border-white/25 bg-white/10 px-5 py-2 text-[11px] font-medium uppercase tracking-[0.32em] text-white backdrop-blur-md">
+              <span className="block h-px w-6 bg-champagne" />
+              {eyebrow}
+            </p>
           )}
-          <h1 className="text-balance font-display text-[clamp(2.4rem,6vw,5.25rem)] leading-[1.02] text-white">
+          <h1 className="text-balance font-display font-light text-[clamp(2.6rem,6.4vw,5.75rem)] leading-[1.04] tracking-[-0.01em] text-white [text-shadow:0_2px_30px_rgb(0_0_0/0.45)]">
             {title}
           </h1>
           {subtitle && (
-            <p className="mt-6 max-w-xl text-base text-white/80 md:text-lg">{subtitle}</p>
+            <p className="mt-8 max-w-2xl text-pretty text-base leading-relaxed text-white/90 md:text-lg [text-shadow:0_1px_18px_rgb(0_0_0/0.5)]">
+              {subtitle}
+            </p>
           )}
-          {cta && <div className="mt-10 flex flex-wrap items-center gap-4">{cta}</div>}
+          {cta && (
+            <div className="mt-10 flex flex-wrap items-center justify-center gap-4">{cta}</div>
+          )}
           {proofs && proofs.length > 0 && (
-            <ul className="mt-12 grid gap-4 border-t border-white/15 pt-8 text-white/85 sm:grid-cols-3">
+            <ul className="mt-14 grid w-full max-w-3xl gap-px overflow-hidden rounded-2xl border border-white/20 bg-white/10 backdrop-blur-md sm:grid-cols-3">
               {proofs.map((p) => (
-                <li key={p} className="text-sm leading-snug">
-                  <span className="mb-1 block h-px w-6 bg-champagne" />
-                  {p}
+                <li
+                  key={p}
+                  className="flex flex-col items-center gap-3 bg-white/5 px-5 py-6 text-center"
+                >
+                  <span className="block h-px w-8 bg-champagne" />
+                  <span className="text-[13px] font-medium leading-snug text-white">{p}</span>
                 </li>
               ))}
             </ul>
@@ -145,12 +174,13 @@ export function Hero({
       </div>
 
       {/* scroll cue */}
-      <div className="pointer-events-none absolute bottom-6 left-1/2 z-10 -translate-x-1/2 text-white/60">
+      <div className="pointer-events-none absolute bottom-6 left-1/2 z-10 -translate-x-1/2 text-white/70">
         <div className="flex flex-col items-center gap-2">
           <span className="text-[10px] tracking-[0.3em] uppercase">Role</span>
-          <span className="block h-8 w-px animate-pulse bg-white/60" />
+          <span className="block h-8 w-px animate-pulse bg-white/70" />
         </div>
       </div>
     </section>
   );
 }
+
