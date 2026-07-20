@@ -87,6 +87,13 @@
     text-rendering: optimizeLegibility;
   }
 
+  html.lightbox-open header {
+    opacity: 0 !important;
+    transform: translateY(-100%) !important;
+    pointer-events: none !important;
+  }
+
+
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
