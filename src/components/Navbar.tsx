@@ -39,7 +39,7 @@ export function Navbar({ hideOverHero = false }: NavbarProps) {
 
   return (
     <header
-      className={`sticky top-0 z-50 border-b border-border/60 bg-background/85 backdrop-blur-md transition-all duration-500 ${
+      className={`${hideOverHero ? "fixed" : "sticky"} inset-x-0 top-0 z-50 border-b border-border/60 bg-background/85 backdrop-blur-md transition-all duration-500 ${
         visible ? "translate-y-0 opacity-100" : "-translate-y-full opacity-0 pointer-events-none"
       }`}
       aria-hidden={!visible}
