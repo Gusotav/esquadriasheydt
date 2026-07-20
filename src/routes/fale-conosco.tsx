@@ -5,6 +5,7 @@ import { Reveal } from "@/components/Reveal";
 import { LeadForm } from "@/components/LeadForm";
 import { Hero } from "@/components/Hero";
 import heroFaleConosco from "@/assets/hero-fale-conosco.jpg.asset.json";
+import heroMobileImg from "@/assets/galeria/portfolio-17.webp.asset.json";
 import { Phone, Mail, Instagram, MapPin } from "lucide-react";
 
 export const Route = createFileRoute("/fale-conosco")({
@@ -37,6 +38,7 @@ function FaleConosco() {
         }
         subtitle="Fale com nossos especialistas e descubra a solução ideal em alumínio, PVC ou fachadas de vidro para obras que exigem precisão, segurança e um acabamento impecável."
         imageUrl={heroFaleConosco.url}
+        imageUrlMobile={heroMobileImg.url}
         imageAlt="Residência de alto padrão com esquadrias HEYDT"
         proofs={[
           "Atendimento consultivo dedicado",

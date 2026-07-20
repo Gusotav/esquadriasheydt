@@ -7,6 +7,7 @@ import { LeadForm } from "@/components/LeadForm";
 import { PortfolioGallery } from "@/components/PortfolioGallery";
 import { SolucoesGrid } from "@/components/SolucoesGrid";
 
+import heroMobileImg from "@/assets/galeria/portfolio-6.webp.asset.json";
 import videoDobra4 from "@/assets/home-dobra-4.mp4.asset.json";
 
 export const Route = createFileRoute("/")({
@@ -97,6 +98,7 @@ function HomePage() {
             </Link>
           </>
         }
+        imageUrlMobile={heroMobileImg.url}
         proofs={[
           "Mais de 47 anos de mercado",
           "Sede própria com 1.000 m² de parque fabril",

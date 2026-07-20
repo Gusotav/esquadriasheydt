@@ -6,6 +6,7 @@ import { Hero } from "@/components/Hero";
 
 import { CountUpStats } from "@/components/CountUpStats";
 import heroQuemSomos from "@/assets/hero-quem-somos.jpg.asset.json";
+import heroMobileImg from "@/assets/galeria/portfolio-5.webp.asset.json";
 import videoHistoria from "@/assets/quem-somos-dobra-2.mp4.asset.json";
 
 export const Route = createFileRoute("/quem-somos")({
@@ -54,6 +55,7 @@ function QuemSomos() {
         }
         subtitle="Nossa história é construída sobre a precisão da engenharia, a robustez da nossa indústria e o compromisso inegociável com o conforto da sua família."
         imageUrl={heroQuemSomos.url}
+        imageUrlMobile={heroMobileImg.url}
         imageAlt="Equipe HEYDT Esquadrias na sede em Maravilha/SC"
         proofs={[
           "Fundada em 1978, em Maravilha/SC",

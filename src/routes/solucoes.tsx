@@ -4,6 +4,7 @@ import { SectionHeader } from "@/components/SectionHeader";
 import { Reveal } from "@/components/Reveal";
 import { Hero } from "@/components/Hero";
 import heroSolucoes from "@/assets/hero-solucoes.jpg.asset.json";
+import heroMobileImg from "@/assets/galeria/portfolio-20.webp.asset.json";
 import residencial from "@/assets/obra-residencial-01.jpg.asset.json";
 import comercial from "@/assets/obra-comercial-02.jpg.asset.json";
 import corporativo from "@/assets/obra-comercial-01.jpg.asset.json";
@@ -71,6 +72,7 @@ function Solucoes() {
         }
         subtitle="Do conforto térmico e acústico da sua residência à imponência estrutural das fachadas comerciais. Reunimos mais de 47 anos de engenharia para integrar estética, segurança e precisão em cada detalhe."
         imageUrl={heroSolucoes.url}
+        imageUrlMobile={heroMobileImg.url}
         imageAlt="Fachada comercial em pele de vidro executada pela HEYDT"
         proofs={[
           "Alumínio, PVC e pele de vidro",
