@@ -28,38 +28,56 @@ import p25 from "@/assets/galeria/portfolio-25.webp.asset.json";
 import p26 from "@/assets/galeria/portfolio-26.webp.asset.json";
 import p27 from "@/assets/galeria/portfolio-27.webp.asset.json";
 import p28 from "@/assets/galeria/portfolio-28.webp.asset.json";
+import p29 from "@/assets/galeria/portfolio-29.webp.asset.json";
+import p30 from "@/assets/galeria/portfolio-30.webp.asset.json";
+import p31 from "@/assets/galeria/portfolio-31.webp.asset.json";
+import p32 from "@/assets/galeria/portfolio-32.webp.asset.json";
+import p33 from "@/assets/galeria/portfolio-33.webp.asset.json";
+import p34 from "@/assets/galeria/portfolio-34.webp.asset.json";
+import p35 from "@/assets/galeria/portfolio-35.webp.asset.json";
+import p36 from "@/assets/galeria/portfolio-36.webp.asset.json";
 
 type Item = { url: string; alt: string };
 
+// 8 melhores obras primeiro — assinaturas premium, mix de residencial e corporativo.
 const ALL: Item[] = [
-  { url: p1.url, alt: "Fachada institucional Clínica Renal Oeste" },
-  { url: p2.url, alt: "Residência de alto padrão com pergolado metálico" },
-  { url: p3.url, alt: "Grande vão de vidro integrando cozinha e sala" },
   { url: p5.url, alt: "Escadaria em mármore com guarda-corpo de vidro" },
-  { url: p7.url, alt: "Fachada comercial iluminada — agência Sicredi" },
-  { url: p4.url, alt: "Fachada corporativa iluminada em concreto e madeira" },
-  { url: p9.url, alt: "Residência com piscina e grandes vãos envidraçados" },
-  { url: p6.url, alt: "Residência contemporânea com fachada em vidro" },
+  { url: p2.url, alt: "Residência de alto padrão com pergolado metálico" },
   { url: p10.url, alt: "Residência assinatura em dois pavimentos" },
-  { url: p15.url, alt: "Fachada residencial com deck de madeira e pedra" },
-  { url: p16.url, alt: "Entrada residencial com painel 3D e vidros amplos" },
   { url: p11.url, alt: "Cabana A-frame com fachada envidraçada" },
-  { url: p13.url, alt: "Sala integrada com portas de vidro para a piscina" },
-  { url: p14.url, alt: "Sala com pano de vidro e vista para o lago" },
-  { url: p12.url, alt: "Escada em mármore com guarda-corpo de vidro" },
   { url: p17.url, alt: "Lobby corporativo com pele de vidro estruturada" },
-  { url: p18.url, alt: "Fachada comercial envidraçada — Grupo Cloud" },
-  { url: p8.url, alt: "Porta pivotante em alumínio preto com veneziana" },
-  { url: p19.url, alt: "Fachada comercial OdontoTop com pele de vidro" },
-  { url: p20.url, alt: "Fachada clínica SIEL & GERA com estrutura de vidro" },
-  { url: p21.url, alt: "Sala de estar com escada em mármore e guarda-corpo de vidro" },
+  { url: p9.url, alt: "Residência com piscina e grandes vãos envidraçados" },
+  { url: p3.url, alt: "Grande vão de vidro integrando cozinha e sala" },
+  { url: p15.url, alt: "Fachada residencial com deck de madeira e pedra" },
+  // demais obras
   { url: p22.url, alt: "Vista superior de sala com escadaria em mármore" },
-  { url: p23.url, alt: "Fachada Hospital do Dente com esquadrias verticais" },
+  { url: p21.url, alt: "Sala de estar com escada em mármore e guarda-corpo de vidro" },
+  { url: p27.url, alt: "Fachada corporativa TenBrasil com pele de vidro espelhada" },
   { url: p24.url, alt: "Cabana A-frame com fachada envidraçada preta" },
+  { url: p30.url, alt: "Deck coberto por pergolado de madeira e vidro" },
+  { url: p14.url, alt: "Sala com pano de vidro e vista para o lago" },
+  { url: p13.url, alt: "Sala integrada com portas de vidro para a piscina" },
+  { url: p4.url, alt: "Fachada corporativa iluminada em concreto e madeira" },
+  { url: p16.url, alt: "Entrada residencial com painel 3D e vidros amplos" },
   { url: p25.url, alt: "Pergolado metálico com ripado de madeira" },
   { url: p26.url, alt: "Residência branca com brises e amplos vãos" },
-  { url: p27.url, alt: "Fachada corporativa TenBrasil com pele de vidro espelhada" },
+  { url: p32.url, alt: "Residência de dois pavimentos com pele de vidro e mármore" },
+  { url: p34.url, alt: "Cobertura em vidro com estrutura de alumínio e madeira" },
+  { url: p33.url, alt: "Fachada contemporânea com brises verticais de madeira" },
+  { url: p18.url, alt: "Fachada comercial envidraçada — Grupo Cloud" },
+  { url: p19.url, alt: "Fachada comercial OdontoTop com pele de vidro" },
+  { url: p12.url, alt: "Escada em mármore com guarda-corpo de vidro" },
   { url: p28.url, alt: "Escada com guarda-corpo de vidro e parede de tijolos" },
+  { url: p1.url, alt: "Fachada institucional Clínica Renal Oeste" },
+  { url: p7.url, alt: "Fachada comercial iluminada — agência Sicredi" },
+  { url: p6.url, alt: "Residência contemporânea com fachada em vidro" },
+  { url: p23.url, alt: "Fachada Hospital do Dente com esquadrias verticais" },
+  { url: p20.url, alt: "Fachada clínica SIEL & GERA com estrutura de vidro" },
+  { url: p29.url, alt: "Residência com telhado alto e detalhes em tijolo" },
+  { url: p31.url, alt: "Agência Sicredi com fachada de vidro e box móvel" },
+  { url: p35.url, alt: "Sobrado com esquadrias pretas e detalhes em pedra" },
+  { url: p36.url, alt: "Fachada institucional Doctor'Home com pele branca" },
+  { url: p8.url, alt: "Porta pivotante em alumínio preto com veneziana" },
 ];
 
 const INITIAL = 8;
