@@ -108,7 +108,7 @@ export function Navbar({ hideOverHero = false }: NavbarProps) {
 
       {/* Mobile drawer */}
       <div
-        className={`overflow-hidden border-t border-border/60 bg-background md:hidden transition-[max-height,opacity] duration-500 ${
+        className={`overflow-hidden border-t border-white/10 bg-primary md:hidden transition-[max-height,opacity] duration-500 ${
           open ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
         }`}
       >
@@ -117,12 +117,12 @@ export function Navbar({ hideOverHero = false }: NavbarProps) {
             <Link
               key={l.to}
               to={l.to}
-              className="border-b border-border/40 py-3 text-sm tracking-[0.14em] uppercase text-foreground/80"
+              className="border-b border-white/10 py-3 text-sm tracking-[0.14em] uppercase text-white/80"
             >
               {l.label}
             </Link>
           ))}
-          <Link to="/fale-conosco" className="btn-primary mt-4 justify-center text-[11px]">
+          <Link to="/fale-conosco" className="mt-4 inline-flex justify-center rounded-full border border-white/30 bg-white px-5 py-3 text-[11px] font-medium uppercase tracking-[0.1em] text-primary transition-colors hover:bg-white/90">
             Falar com Especialista
           </Link>
         </nav>
