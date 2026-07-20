@@ -44,14 +44,18 @@ export function Footer() {
           <p className="eyebrow text-primary-foreground/60">Contato</p>
           <ul className="mt-5 space-y-3 text-sm text-primary-foreground/85">
             <li>
-              <a href="tel:+5549988507286" className="link-underline">(49) 98850-7286</a>
+              <a href="tel:+5549988507286" className="link-underline inline-flex items-start gap-2.5">
+                <Phone className="mt-0.5 h-4 w-4 shrink-0 text-[color:var(--color-accent)]" aria-hidden="true" />
+                <span>(49) 98850-7286</span>
+              </a>
             </li>
             <li>
               <a
                 href="mailto:jessica@esquadriasefachadas.com.br"
-                className="link-underline break-words"
+                className="link-underline inline-flex items-start gap-2.5 break-words"
               >
-                jessica@esquadriasefachadas.com.br
+                <Mail className="mt-0.5 h-4 w-4 shrink-0 text-[color:var(--color-accent)]" aria-hidden="true" />
+                <span className="break-all">jessica@esquadriasefachadas.com.br</span>
               </a>
             </li>
             <li>
@@ -59,15 +63,21 @@ export function Footer() {
                 href="https://instagram.com/heydtesquadrias"
                 target="_blank"
                 rel="noreferrer"
-                className="link-underline"
+                className="link-underline inline-flex items-start gap-2.5"
               >
-                @heydtesquadrias
+                <Instagram className="mt-0.5 h-4 w-4 shrink-0 text-[color:var(--color-accent)]" aria-hidden="true" />
+                <span>@heydtesquadrias</span>
               </a>
             </li>
             <li className="pt-2 text-primary-foreground/70">
-              R. Paulino Francisco de Oliveira, 316
-              <br />
-              Maravilha/SC — CEP 89874-000
+              <span className="inline-flex items-start gap-2.5">
+                <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-[color:var(--color-accent)]" aria-hidden="true" />
+                <span>
+                  R. Paulino Francisco de Oliveira, 316
+                  <br />
+                  Maravilha/SC — CEP 89874-000
+                </span>
+              </span>
             </li>
           </ul>
         </div>
