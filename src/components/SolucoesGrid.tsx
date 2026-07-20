@@ -115,7 +115,7 @@ export function SolucoesGrid({ items }: { items: SolucaoItem[] }) {
             <Link
               to="/solucoes"
               className={[
-                "relative mt-8 inline-flex items-center gap-2 text-xs uppercase tracking-[0.2em] transition-colors duration-700",
+                "relative mt-8 inline-flex items-center gap-2 whitespace-nowrap text-xs uppercase tracking-[0.2em] transition-colors duration-700",
                 isActive
                   ? "text-champagne"
                   : "text-primary link-underline",
