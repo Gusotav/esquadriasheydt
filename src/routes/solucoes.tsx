@@ -2,6 +2,8 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/SiteLayout";
 import { SectionHeader } from "@/components/SectionHeader";
 import { Reveal } from "@/components/Reveal";
+import { Hero } from "@/components/Hero";
+import heroSolucoes from "@/assets/hero-solucoes.jpg.asset.json";
 import residencial from "@/assets/obra-residencial-01.jpg.asset.json";
 import comercial from "@/assets/obra-comercial-02.jpg.asset.json";
 import corporativo from "@/assets/obra-comercial-01.jpg.asset.json";
@@ -56,46 +58,27 @@ const solucoes = [
 
 function Solucoes() {
   return (
-    <SiteLayout>
-      {/* HERO */}
-      <section className="relative isolate overflow-hidden bg-primary text-white">
-        <div className="absolute inset-0 -z-10 opacity-45">
-          <img
-            src={comercial.url}
-            alt="Fachada de vidro HEYDT"
-            className="h-full w-full object-cover"
-            loading="eager"
-            fetchPriority="high"
-            width={1600}
-            height={1000}
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-primary/70 via-primary/55 to-primary/90" />
-        </div>
-        <div className="container-page grid min-h-[65svh] items-end pb-16 pt-32 md:pb-24 md:pt-40">
-          <Reveal className="max-w-3xl">
-            <p className="eyebrow mb-6 text-white/70 hairline">Soluções HEYDT</p>
-            <h1 className="font-display text-[clamp(2.3rem,5.2vw,4.4rem)] leading-[1.05]">
-              Soluções em esquadrias e sistemas para projetos que <em className="italic text-champagne">exigem mais.</em>
-            </h1>
-            <p className="mt-6 max-w-xl text-base text-white/80 md:text-lg">
-              Do conforto térmico e acústico para a sua residência à imponência estrutural das
-              fachadas comerciais. Reunimos mais de 47 anos de engenharia para integrar estética,
-              segurança e precisão em cada detalhe.
-            </p>
-            <nav className="mt-10 flex flex-wrap gap-3 text-[11px] uppercase tracking-[0.2em]">
-              {solucoes.map((s) => (
-                <a
-                  key={s.id}
-                  href={`#${s.id}`}
-                  className="rounded-full border border-white/25 px-4 py-2 text-white/85 transition hover:border-white hover:bg-white/10"
-                >
-                  {s.tag.split(" · ")[0]}
-                </a>
-              ))}
-            </nav>
-          </Reveal>
-        </div>
-      </section>
+    <SiteLayout hideNavOverHero>
+      <Hero
+        eyebrow="Soluções HEYDT"
+        title={
+          <>
+            <span className="block whitespace-nowrap">Soluções para projetos</span>
+            <span className="block whitespace-nowrap">
+              que <em className="font-display italic text-champagne">exigem mais.</em>
+            </span>
+          </>
+        }
+        subtitle="Do conforto térmico e acústico da sua residência à imponência estrutural das fachadas comerciais. Reunimos mais de 47 anos de engenharia para integrar estética, segurança e precisão em cada detalhe."
+        imageUrl={heroSolucoes.url}
+        imageAlt="Fachada comercial em pele de vidro executada pela HEYDT"
+        proofs={[
+          "Alumínio, PVC e pele de vidro",
+          "Engenharia sob medida para cada obra",
+          "Instalação com equipe própria",
+        ]}
+      />
+
 
       {/* GRID DE SOLUÇÕES */}
       <section className="py-20 md:py-28">
