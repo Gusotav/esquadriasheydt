@@ -1,6 +1,6 @@
 import { Link, useRouterState } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import logo from "@/assets/logo-heydt.png.asset.json";
+import logo from "@/assets/logo-heydt-branca.png.asset.json";
 
 const links = [
   { to: "/", label: "Home" },
