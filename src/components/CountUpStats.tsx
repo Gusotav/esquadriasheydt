@@ -21,12 +21,13 @@ function format(value: number, useThousands: boolean) {
 const DURATION_MS = 1500;
 const GAP_MS = 250;
 
-export function CountUpStats({ items, className = "" }: { items: Stat[]; className?: string }) {
+export function CountUpStats({ items, className = "", centered = false }: { items: Stat[]; className?: string; centered?: boolean }) {
   const parsed = items.map((it) => ({ ...it, parsed: parseStat(it.n) }));
   const [values, setValues] = useState<number[]>(() => items.map(() => 0));
   const [done, setDone] = useState<boolean[]>(() => items.map(() => false));
   const ref = useRef<HTMLUListElement | null>(null);
   const startedRef = useRef(false);
+
 
 
   useEffect(() => {
