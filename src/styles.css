@@ -110,6 +110,11 @@
     font-weight: 400;
     letter-spacing: -0.02em;
     line-height: 1.05;
+    text-wrap: balance;
+    word-break: keep-all;
+  }
+  @media (max-width: 767px) {
+    h1, h2, h3, h4 { hyphens: none; }
   }
 
   ::selection {
