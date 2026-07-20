@@ -5,7 +5,7 @@ import { SectionHeader } from "@/components/SectionHeader";
 import { Reveal } from "@/components/Reveal";
 import { LeadForm } from "@/components/LeadForm";
 import { PortfolioGallery } from "@/components/PortfolioGallery";
-import { FocusList } from "@/components/FocusList";
+import { SpotlightList } from "@/components/SpotlightList";
 import videoDobra4 from "@/assets/home-dobra-4.mp4.asset.json";
 
 export const Route = createFileRoute("/")({
@@ -233,18 +233,11 @@ function HomePage() {
             />
           </Reveal>
 
-          <FocusList className="mt-16 grid gap-8 md:grid-cols-2 md:gap-12 lg:grid-cols-4">
-            {diferenciais.map((d, i) => (
-              <Reveal as="li" key={d.title} delay={i * 90}>
-                <div className="mb-6 flex items-center gap-4">
-                  <span className="font-display text-3xl text-primary">0{i + 1}</span>
-                  <span className="block h-px flex-1 bg-border" />
-                </div>
-                <h3 className="font-display text-xl text-foreground">{d.title}</h3>
-                <p className="mt-3 text-sm text-muted-foreground">{d.desc}</p>
-              </Reveal>
-            ))}
-          </FocusList>
+          <SpotlightList
+            items={diferenciais.map((d) => ({ title: d.title, desc: d.desc }))}
+            className="mt-16 grid gap-4 md:grid-cols-2 md:gap-6 lg:grid-cols-4"
+          />
+
         </div>
       </section>
 
