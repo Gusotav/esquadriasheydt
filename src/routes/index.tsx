@@ -175,8 +175,8 @@ function HomePage() {
               eyebrow="Autoridade técnica"
               title={
                 <>
-                  Quem projeta o luxo, <br />
-                  não abre mão da <em className="italic text-champagne">segurança HEYDT.</em>
+                  Quem projeta o luxo, não abre mão da{" "}
+                  <em className="italic text-champagne">segurança HEYDT.</em>
                 </>
               }
               subtitle="Ouça o que fazemos e entenda, na prática, os detalhes técnicos que fazem as nossas esquadrias durarem gerações."
