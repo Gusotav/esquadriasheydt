@@ -77,47 +77,67 @@ function FaleConosco() {
                   label: "WhatsApp / Telefone",
                   value: "(49) 98850-7286",
                   href: "https://wa.me/5549988507286",
+                  icon: Phone,
                 },
                 {
                   label: "E-mail comercial",
                   value: "jessica@esquadriasefachadas.com.br",
                   href: "mailto:jessica@esquadriasefachadas.com.br",
+                  icon: Mail,
                 },
                 {
                   label: "Instagram",
                   value: "@heydtesquadrias",
                   href: "https://instagram.com/heydtesquadrias",
+                  icon: Instagram,
                 },
-              ].map((c) => (
-                <li key={c.label} className="flex flex-col gap-1 py-6">
-                  <span className="eyebrow">{c.label}</span>
-                  <a
-                    href={c.href}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="text-lg text-foreground link-underline md:text-xl"
-                  >
-                    {c.value}
-                  </a>
-                </li>
-              ))}
+              ].map((c) => {
+                const Icon = c.icon;
+                return (
+                  <li key={c.label} className="py-6">
+                    <a
+                      href={c.href}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="group flex items-start gap-4"
+                    >
+                      <span className="mt-0.5 inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-border bg-surface text-primary transition-colors group-hover:border-primary/30 group-hover:bg-primary/5">
+                        <Icon className="h-4 w-4" aria-hidden="true" />
+                      </span>
+                      <div className="flex flex-col gap-1">
+                        <span className="eyebrow">{c.label}</span>
+                        <span className="text-lg text-foreground link-underline md:text-xl">
+                          {c.value}
+                        </span>
+                      </div>
+                    </a>
+                  </li>
+                );
+              })}
             </ul>
 
             <div className="mt-10 rounded-2xl border border-border bg-surface p-8">
-              <span className="eyebrow text-primary">Sede HEYDT</span>
-              <p className="mt-4 text-lg leading-snug text-foreground">
-                R. Paulino Francisco de Oliveira, 316
-                <br />
-                Maravilha/SC — CEP 89874-000
-              </p>
-              <a
-                href="https://www.google.com/maps/search/?api=1&query=R.+Paulino+Francisco+de+Oliveira,+316+Maravilha+SC"
-                target="_blank"
-                rel="noreferrer"
-                className="mt-6 inline-flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-primary link-underline"
-              >
-                Traçar rota
-              </a>
+              <div className="flex items-start gap-4">
+                <span className="mt-0.5 inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-border bg-white text-primary">
+                  <MapPin className="h-4 w-4" aria-hidden="true" />
+                </span>
+                <div>
+                  <span className="eyebrow text-primary">Sede HEYDT</span>
+                  <p className="mt-2 text-lg leading-snug text-foreground">
+                    R. Paulino Francisco de Oliveira, 316
+                    <br />
+                    Maravilha/SC — CEP 89874-000
+                  </p>
+                  <a
+                    href="https://www.google.com/maps/search/?api=1&query=R.+Paulino+Francisco+de+Oliveira,+316+Maravilha+SC"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="mt-4 inline-flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-primary link-underline"
+                  >
+                    Traçar rota
+                  </a>
+                </div>
+              </div>
             </div>
           </Reveal>
         </div>
