@@ -1,5 +1,6 @@
 import { useEffect, useRef, type ReactNode } from "react";
 import heroImg from "@/assets/hero-home-v2.jpg.asset.json";
+import heroMobileImg from "@/assets/galeria/portfolio-5.webp.asset.json";
 
 interface HeroProps {
   eyebrow?: string;
@@ -8,8 +9,10 @@ interface HeroProps {
   cta?: ReactNode;
   proofs?: string[];
   imageUrl?: string;
+  imageUrlMobile?: string;
   imageAlt?: string;
 }
+
 
 export function Hero({
   eyebrow,
