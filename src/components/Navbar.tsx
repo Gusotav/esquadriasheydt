@@ -74,7 +74,7 @@ export function Navbar({ hideOverHero = false }: NavbarProps) {
 
         <Link
           to="/fale-conosco"
-          className="hidden shrink-0 items-center justify-center gap-2 rounded-full border border-white/30 bg-white/10 px-5 py-2.5 text-[11px] font-medium uppercase tracking-[0.1em] text-white transition-colors hover:border-white hover:bg-white hover:text-primary md:inline-flex"
+          className="hidden shrink-0 items-center justify-center gap-2 rounded-full bg-white px-5 py-2.5 text-[11px] font-medium uppercase tracking-[0.1em] text-primary transition-colors hover:bg-white/90 md:inline-flex"
         >
           Falar com Especialista
         </Link>
@@ -122,7 +122,7 @@ export function Navbar({ hideOverHero = false }: NavbarProps) {
               {l.label}
             </Link>
           ))}
-          <Link to="/fale-conosco" className="mt-4 inline-flex justify-center rounded-full border border-white/30 bg-white px-5 py-3 text-[11px] font-medium uppercase tracking-[0.1em] text-primary transition-colors hover:bg-white/90">
+          <Link to="/fale-conosco" className="mt-4 inline-flex justify-center rounded-full bg-white px-5 py-3 text-[11px] font-medium uppercase tracking-[0.1em] text-primary transition-colors hover:bg-white/90">
             Falar com Especialista
           </Link>
         </nav>
