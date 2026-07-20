@@ -137,8 +137,10 @@ function HomePage() {
               eyebrow="Nossas soluções"
               title={
                 <>
-                  Soluções completas e sob medida <br className="hidden md:block" />
-                  <em className="italic">para cada etapa da sua obra.</em>
+                  <span className="block whitespace-nowrap">Soluções completas e sob medida</span>
+                  <span className="block whitespace-nowrap">
+                    <em className="italic">para cada etapa da sua obra.</em>
+                  </span>
                 </>
               }
               subtitle="Do projeto residencial ao corporativo, reunimos linhas desenvolvidas para unir desempenho térmico, acústico e design de ponta."
