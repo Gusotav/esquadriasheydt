@@ -186,14 +186,14 @@ export function PortfolioGallery() {
                 decoding="async"
                 className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1200ms] group-hover:scale-[1.04]"
               />
-              {/* Indicativo sutil — só aparece no hover */}
+              {/* Indicativo sutil — sempre visível no mobile, só no hover no desktop */}
               <span
                 aria-hidden
-                className="pointer-events-none absolute inset-0 bg-gradient-to-t from-primary/50 via-primary/10 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                className="pointer-events-none absolute inset-0 bg-gradient-to-t from-primary/50 via-primary/10 to-transparent opacity-100 transition-opacity duration-300 md:opacity-0 md:group-hover:opacity-100"
               />
               <span
                 aria-hidden
-                className="pointer-events-none absolute bottom-3 right-3 inline-flex items-center gap-1.5 rounded-full border border-white/25 bg-black/35 px-2.5 py-1 text-[11px] font-medium tracking-wide text-white opacity-0 backdrop-blur-sm transition-opacity duration-300 group-hover:opacity-100"
+                className="pointer-events-none absolute bottom-3 right-3 inline-flex items-center gap-1.5 rounded-full border border-white/25 bg-black/35 px-2.5 py-1 text-[11px] font-medium tracking-wide text-white opacity-100 backdrop-blur-sm transition-opacity duration-300 md:opacity-0 md:group-hover:opacity-100"
               >
                 <Expand className="h-3 w-3" />
                 Ampliar
