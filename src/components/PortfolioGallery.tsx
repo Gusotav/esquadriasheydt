@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import { Reveal } from "@/components/Reveal";
 import p1 from "@/assets/galeria/portfolio-1.webp.asset.json";
 import p2 from "@/assets/galeria/portfolio-2.webp.asset.json";
@@ -10,26 +10,36 @@ import p7 from "@/assets/galeria/portfolio-7.webp.asset.json";
 import p8 from "@/assets/galeria/portfolio-8.webp.asset.json";
 import p9 from "@/assets/galeria/portfolio-9.webp.asset.json";
 import p10 from "@/assets/galeria/portfolio-10.webp.asset.json";
+import p11 from "@/assets/galeria/portfolio-11.webp.asset.json";
+import p12 from "@/assets/galeria/portfolio-12.webp.asset.json";
+import p13 from "@/assets/galeria/portfolio-13.webp.asset.json";
+import p14 from "@/assets/galeria/portfolio-14.webp.asset.json";
+import p15 from "@/assets/galeria/portfolio-15.webp.asset.json";
+import p16 from "@/assets/galeria/portfolio-16.webp.asset.json";
+import p17 from "@/assets/galeria/portfolio-17.webp.asset.json";
+import p18 from "@/assets/galeria/portfolio-18.webp.asset.json";
 
-type Orient = "landscape" | "portrait";
-type Item = { url: string; alt: string; o: Orient };
+type Item = { url: string; alt: string };
 
-/**
- * Ordem intencional: intercalando landscape / portrait para que o algoritmo
- * de grid consiga fechar cada linha em 12 colunas sem espaços vazios.
- * Novas fotos: apenas anexar ao final; buildRows se reorganiza.
- */
 const ALL: Item[] = [
-  { url: p1.url, alt: "Fachada institucional Clínica Renal Oeste", o: "landscape" },
-  { url: p3.url, alt: "Grande vão de vidro integrando cozinha e sala", o: "portrait" },
-  { url: p5.url, alt: "Escadaria em mármore com guarda-corpo de vidro", o: "portrait" },
-  { url: p2.url, alt: "Residência de alto padrão com pergolado metálico", o: "landscape" },
-  { url: p7.url, alt: "Fachada comercial iluminada — agência Sicredi", o: "portrait" },
-  { url: p4.url, alt: "Fachada corporativa iluminada em concreto e madeira", o: "landscape" },
-  { url: p6.url, alt: "Residência contemporânea com fachada em vidro", o: "portrait" },
-  { url: p8.url, alt: "Porta pivotante em alumínio preto com veneziana", o: "portrait" },
-  { url: p9.url, alt: "Residência com piscina e grandes vãos envidraçados", o: "landscape" },
-  { url: p10.url, alt: "Projeto residencial assinatura", o: "landscape" },
+  { url: p1.url, alt: "Fachada institucional Clínica Renal Oeste" },
+  { url: p2.url, alt: "Residência de alto padrão com pergolado metálico" },
+  { url: p3.url, alt: "Grande vão de vidro integrando cozinha e sala" },
+  { url: p5.url, alt: "Escadaria em mármore com guarda-corpo de vidro" },
+  { url: p7.url, alt: "Fachada comercial iluminada — agência Sicredi" },
+  { url: p4.url, alt: "Fachada corporativa iluminada em concreto e madeira" },
+  { url: p9.url, alt: "Residência com piscina e grandes vãos envidraçados" },
+  { url: p6.url, alt: "Residência contemporânea com fachada em vidro" },
+  { url: p10.url, alt: "Residência assinatura em dois pavimentos" },
+  { url: p15.url, alt: "Fachada residencial com deck de madeira e pedra" },
+  { url: p16.url, alt: "Entrada residencial com painel 3D e vidros amplos" },
+  { url: p11.url, alt: "Cabana A-frame com fachada envidraçada" },
+  { url: p13.url, alt: "Sala integrada com portas de vidro para a piscina" },
+  { url: p14.url, alt: "Sala com pano de vidro e vista para o lago" },
+  { url: p12.url, alt: "Escada em mármore com guarda-corpo de vidro" },
+  { url: p17.url, alt: "Lobby corporativo com pele de vidro estruturada" },
+  { url: p18.url, alt: "Fachada comercial envidraçada — Grupo Cloud" },
+  { url: p8.url, alt: "Porta pivotante em alumínio preto com veneziana" },
 ];
 
 const INITIAL = 8;
@@ -37,30 +47,24 @@ const INITIAL = 8;
 export function PortfolioGallery() {
   const [expanded, setExpanded] = useState(false);
   const items = expanded ? ALL : ALL.slice(0, INITIAL);
-  const rows = useMemo(() => buildRows(items), [items]);
 
   return (
     <>
-      <div className="mt-16 flex flex-col gap-2 md:mt-24 md:gap-3">
-        {rows.map((row, ri) => (
-          <div key={ri} className="grid grid-cols-12 gap-2 md:gap-3">
-            {row.map((cell, ci) => (
-              <Reveal
-                key={`${ri}-${ci}`}
-                delay={ci * 80}
-                className={`${cell.spanClass} group relative overflow-hidden rounded-xl bg-muted`}
-                style={{ aspectRatio: cell.aspect }}
-              >
-                <img
-                  src={cell.item.url}
-                  alt={cell.item.alt}
-                  loading={ri === 0 ? "eager" : "lazy"}
-                  decoding="async"
-                  className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1200ms] group-hover:scale-[1.04]"
-                />
-              </Reveal>
-            ))}
-          </div>
+      <div className="mt-16 grid grid-cols-2 gap-2 md:mt-24 md:grid-cols-4 md:gap-3">
+        {items.map((item, i) => (
+          <Reveal
+            key={item.url}
+            delay={(i % 4) * 80}
+            className="group relative aspect-square overflow-hidden rounded-xl bg-muted"
+          >
+            <img
+              src={item.url}
+              alt={item.alt}
+              loading={i < 4 ? "eager" : "lazy"}
+              decoding="async"
+              className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1200ms] group-hover:scale-[1.04]"
+            />
+          </Reveal>
         ))}
       </div>
 
@@ -77,79 +81,4 @@ export function PortfolioGallery() {
       )}
     </>
   );
-}
-
-type Cell = { item: Item; spanClass: string; aspect: string };
-
-/**
- * Agrupa itens em linhas de 12 colunas sem sobras.
- * Cada padrão foi calibrado para que as cells de uma mesma linha tenham
- * exatamente a mesma altura (ex.: 8u landscape 4/3 = 6u tall; 4u portrait 2/3 = 6u tall).
- */
-function buildRows(items: Item[]): Cell[][] {
-  const rows: Cell[][] = [];
-  let i = 0;
-  while (i < items.length) {
-    const a = items[i];
-    const b = items[i + 1];
-    const c = items[i + 2];
-
-    // 3 portraits alinhados → col-span-4 cada, aspect 2/3
-    if (a?.o === "portrait" && b?.o === "portrait" && c?.o === "portrait") {
-      rows.push([
-        cell(a, "col-span-12 md:col-span-4", "2 / 3"),
-        cell(b, "col-span-12 md:col-span-4", "2 / 3"),
-        cell(c, "col-span-12 md:col-span-4", "2 / 3"),
-      ]);
-      i += 3;
-      continue;
-    }
-    // landscape + portrait → 8 + 4 (mesma altura)
-    if (a?.o === "landscape" && b?.o === "portrait") {
-      rows.push([
-        cell(a, "col-span-12 md:col-span-8", "4 / 3"),
-        cell(b, "col-span-12 md:col-span-4", "2 / 3"),
-      ]);
-      i += 2;
-      continue;
-    }
-    if (a?.o === "portrait" && b?.o === "landscape") {
-      rows.push([
-        cell(a, "col-span-12 md:col-span-4", "2 / 3"),
-        cell(b, "col-span-12 md:col-span-8", "4 / 3"),
-      ]);
-      i += 2;
-      continue;
-    }
-    // 2 landscapes → 6 + 6, aspect 3/2 (perfeito para landscape)
-    if (a?.o === "landscape" && b?.o === "landscape") {
-      rows.push([
-        cell(a, "col-span-12 md:col-span-6", "3 / 2"),
-        cell(b, "col-span-12 md:col-span-6", "3 / 2"),
-      ]);
-      i += 2;
-      continue;
-    }
-    // 2 portraits → 6 + 6, aspect 3/4 (leve corte lateral, altura maior = destaque)
-    if (a?.o === "portrait" && b?.o === "portrait") {
-      rows.push([
-        cell(a, "col-span-12 md:col-span-6", "3 / 4"),
-        cell(b, "col-span-12 md:col-span-6", "3 / 4"),
-      ]);
-      i += 2;
-      continue;
-    }
-    // Item sozinho no final → full width
-    if (a) {
-      rows.push([
-        cell(a, "col-span-12", a.o === "landscape" ? "16 / 9" : "3 / 4"),
-      ]);
-      i += 1;
-    }
-  }
-  return rows;
-}
-
-function cell(item: Item, spanClass: string, aspect: string): Cell {
-  return { item, spanClass, aspect };
 }
