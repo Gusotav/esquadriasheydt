@@ -138,20 +138,8 @@ export function Hero({
         }}
       />
 
-      {/* Top bar com selo da marca */}
-      <div className="absolute inset-x-0 top-0 z-10">
-        <div className="container-page flex h-16 items-center justify-between text-white md:h-20">
-          <span className="eyebrow text-white/85">HEYDT · Desde 1978</span>
-          <a
-            href="https://wa.me/5549988507286"
-            target="_blank"
-            rel="noreferrer"
-            className="hidden text-xs uppercase tracking-[0.2em] text-white link-underline sm:inline"
-          >
-            (49) 98850-7286
-          </a>
-        </div>
-      </div>
+      {/* Top bar removida — a Navbar do site já ocupa esse espaço sobre o hero */}
+
 
       <div
         ref={contentRef}
