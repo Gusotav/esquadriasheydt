@@ -38,6 +38,7 @@ function FaleConosco() {
         }
         subtitle="Fale com nossos especialistas e descubra a solução ideal em alumínio, PVC ou fachadas de vidro para obras que exigem precisão, segurança e um acabamento impecável."
         imageUrl={heroFaleConosco.url}
+        imageUrlMobile={heroMobileImg.url}
         imageAlt="Residência de alto padrão com esquadrias HEYDT"
         proofs={[
           "Atendimento consultivo dedicado",
