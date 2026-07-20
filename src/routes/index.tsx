@@ -191,8 +191,8 @@ function HomePage() {
 
       {/* SEÇÃO 4 — AUTORIDADE */}
       <section className="bg-primary py-24 text-white md:py-36">
-        <div className="container-page grid gap-12 md:grid-cols-[1fr_1.2fr] md:items-center">
-          <Reveal>
+        <div className="container-page grid items-center gap-12 md:grid-cols-[1.1fr_0.9fr] md:gap-16 lg:gap-24">
+          <Reveal className="order-2 md:order-1">
             <SectionHeader
               invert
               eyebrow="Autoridade técnica"
@@ -204,16 +204,19 @@ function HomePage() {
               }
               subtitle="Ouça o que fazemos e entenda, na prática, os detalhes técnicos que fazem as nossas esquadrias durarem gerações."
             />
-            <p className="mt-8 max-w-md text-sm text-white/70">
+            <p className="mt-8 max-w-md text-sm leading-relaxed text-white/70">
               Do desenho arquitetônico à instalação, cada etapa é conduzida por especialistas
               treinados nos padrões europeus de acabamento e desempenho.
             </p>
+            <p className="mt-8 text-xs uppercase tracking-[0.25em] text-white/50">
+              Detalhes técnicos · HEYDT
+            </p>
           </Reveal>
 
-          <Reveal delay={140} className="relative">
-            <div className="relative mx-auto overflow-hidden rounded-2xl bg-black/40 shadow-2xl ring-1 ring-white/10 max-w-[360px]">
+          <Reveal delay={140} className="order-1 flex justify-center md:order-2 md:justify-end">
+            <div className="relative w-full max-w-[320px] overflow-hidden rounded-2xl bg-black shadow-2xl ring-1 ring-white/10">
               <video
-                className="aspect-[9/16] w-full object-contain bg-black"
+                className="aspect-[9/16] w-full object-contain"
                 src={videoDobra4.url}
                 controls
                 playsInline
@@ -221,12 +224,10 @@ function HomePage() {
                 poster=""
               />
             </div>
-            <p className="mt-4 text-xs uppercase tracking-[0.25em] text-white/50">
-              Detalhes técnicos · HEYDT
-            </p>
           </Reveal>
         </div>
       </section>
+
 
       {/* SEÇÃO 5 — DIFERENCIAIS */}
       <section className="py-24 md:py-36">
