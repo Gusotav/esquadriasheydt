@@ -62,9 +62,12 @@ export function Navbar({ hideOverHero = false }: NavbarProps) {
               <Link
                 key={l.to}
                 to={l.to}
-                className={`text-[13px] tracking-[0.16em] uppercase transition-colors link-underline ${
-                  active ? "text-white" : "text-white/75 hover:text-white"
-                }`}
+                className={[
+                  "relative text-[13px] tracking-[0.16em] uppercase transition-colors",
+                  active ? "text-white" : "text-white/75 hover:text-white",
+                  active && "after:absolute after:-bottom-1.5 after:left-0 after:h-[2px] after:w-full after:rounded-full after:bg-champagne",
+                ].filter(Boolean).join(" ")}
+                aria-current={active ? "page" : undefined}
               >
                 {l.label}
               </Link>
