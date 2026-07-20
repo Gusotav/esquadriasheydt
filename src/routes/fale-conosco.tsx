@@ -30,7 +30,7 @@ function FaleConosco() {
         eyebrow="Fale conosco"
         title={
           <>
-            <span className="block md:whitespace-nowrap">Dê o primeiro passo para</span>
+            <span className="block md:whitespace-nowrap">Dê o primeiro passo <br className="md:hidden" />para</span>
             <span className="block md:whitespace-nowrap">
               o <em className="font-display italic text-champagne">conforto definitivo.</em>
             </span>
