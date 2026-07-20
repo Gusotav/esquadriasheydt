@@ -21,12 +21,14 @@ function format(value: number, useThousands: boolean) {
 const DURATION_MS = 1500;
 const GAP_MS = 250;
 
-export function CountUpStats({ items }: { items: Stat[] }) {
+export function CountUpStats({ items, className = "", centered = false }: { items: Stat[]; className?: string; centered?: boolean }) {
   const parsed = items.map((it) => ({ ...it, parsed: parseStat(it.n) }));
   const [values, setValues] = useState<number[]>(() => items.map(() => 0));
   const [done, setDone] = useState<boolean[]>(() => items.map(() => false));
   const ref = useRef<HTMLUListElement | null>(null);
   const startedRef = useRef(false);
+
+
 
   useEffect(() => {
     const el = ref.current;
@@ -83,7 +85,7 @@ export function CountUpStats({ items }: { items: Stat[] }) {
   }
 
   return (
-    <ul ref={ref} className="mt-16 grid gap-10 md:grid-cols-4 md:gap-8">
+    <ul ref={ref} className={`mt-16 grid gap-10 md:grid-cols-4 md:gap-8 ${centered ? "text-center md:text-left" : ""} ${className}`}>
       {parsed.map((x, i) => {
         const isActive = !done[i] && values[i] > 0;
         return (
@@ -100,6 +102,7 @@ export function CountUpStats({ items }: { items: Stat[] }) {
             <span
               className={[
                 "mt-3 block h-px origin-left bg-white/40 transition-all duration-700",
+                centered ? "mx-auto md:mx-0" : "",
                 done[i] ? "w-16 bg-champagne/80" : isActive ? "w-16" : "w-10",
               ].join(" ")}
             />
