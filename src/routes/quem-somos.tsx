@@ -187,7 +187,7 @@ function QuemSomos() {
               subtitle="Fale com nossos especialistas e descubra como nosso atendimento consultivo pode transformar a etapa de esquadrias da sua obra."
             />
             <div className="mt-10">
-              <Link to="/fale-conosco" className="btn-primary">Agendar Atendimento Consultivo</Link>
+              <Link to="/fale-conosco" className="btn-primary">Agendar atendimento</Link>
             </div>
           </Reveal>
         </div>

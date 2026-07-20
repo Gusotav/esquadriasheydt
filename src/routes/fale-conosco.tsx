@@ -63,7 +63,7 @@ function FaleConosco() {
               subtitle="Preencha o formulário e receba o retorno da nossa equipe consultiva."
             />
             <div className="mt-10 rounded-2xl border border-border bg-card p-6 md:p-12">
-              <LeadForm cta="Solicitar Atendimento Exclusivo" />
+              <LeadForm cta="Solicitar atendimento" />
             </div>
           </Reveal>
 

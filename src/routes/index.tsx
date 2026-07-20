@@ -160,7 +160,7 @@ function HomePage() {
 
           <Reveal className="mt-12 text-center">
             <Link to="/fale-conosco" className="btn-primary">
-              Qual o perfil do seu projeto? Fale conosco
+              Falar com um especialista
             </Link>
           </Reveal>
         </div>
