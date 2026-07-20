@@ -58,7 +58,7 @@ export function ValoresList({ items }: { items: Valor[] }) {
             <span
               className={[
                 "font-display text-2xl transition-colors duration-700",
-                isActive ? "text-[hsl(var(--champagne))]" : "text-primary",
+                isActive ? "text-champagne" : "text-primary",
               ].join(" ")}
             >
               {v.n}
