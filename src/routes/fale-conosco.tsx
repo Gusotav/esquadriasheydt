@@ -3,6 +3,7 @@ import { SiteLayout } from "@/components/SiteLayout";
 import { SectionHeader } from "@/components/SectionHeader";
 import { Reveal } from "@/components/Reveal";
 import { LeadForm } from "@/components/LeadForm";
+import { Phone, Mail, Instagram, MapPin } from "lucide-react";
 
 export const Route = createFileRoute("/fale-conosco")({
   head: () => ({
