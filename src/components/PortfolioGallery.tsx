@@ -208,7 +208,7 @@ export function PortfolioGallery() {
           <button
             type="button"
             onClick={() => setExpanded((v) => !v)}
-            className="btn-ghost"
+            className="btn-primary"
           >
             {expanded ? "Recolher galeria" : "Explorar nosso Portfólio Completo"}
           </button>
