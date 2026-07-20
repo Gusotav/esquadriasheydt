@@ -179,7 +179,14 @@ function QuemSomos() {
             <SectionHeader
               align="center"
               eyebrow="Próximo passo"
-              title={<>Seu projeto de alto padrão exige a <em className="italic">segurança que a HEYDT construiu.</em></>}
+              title={
+                <>
+                  <span className="block whitespace-nowrap">Seu projeto de alto padrão exige a</span>
+                  <span className="block whitespace-nowrap">
+                    <em className="italic">segurança que a HEYDT construiu.</em>
+                  </span>
+                </>
+              }
               subtitle="Fale com nossos especialistas e descubra como nosso atendimento consultivo pode transformar a etapa de esquadrias da sua obra."
             />
             <div className="mt-10">
