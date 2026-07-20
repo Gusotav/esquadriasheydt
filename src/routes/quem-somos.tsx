@@ -45,8 +45,8 @@ function QuemSomos() {
         eyebrow="Quem somos · Desde 1978"
         title={
           <>
-            <span className="block whitespace-nowrap">A tradição de quem molda</span>
-            <span className="block whitespace-nowrap">
+            <span className="block md:whitespace-nowrap">A tradição de quem molda</span>
+            <span className="block md:whitespace-nowrap">
               o alto padrão{" "}
               <em className="font-display italic text-champagne">há 47 anos.</em>
             </span>
@@ -171,8 +171,8 @@ function QuemSomos() {
               eyebrow="Próximo passo"
               title={
                 <>
-                  <span className="block whitespace-nowrap">Seu projeto de alto padrão exige a</span>
-                  <span className="block whitespace-nowrap">
+                  <span className="block md:whitespace-nowrap">Seu projeto de alto padrão exige a</span>
+                  <span className="block md:whitespace-nowrap">
                     <em className="italic">segurança que a HEYDT construiu.</em>
                   </span>
                 </>

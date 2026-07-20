@@ -1,5 +1,6 @@
 import { useEffect, useRef, type ReactNode } from "react";
 import heroImg from "@/assets/hero-home-v2.jpg.asset.json";
+import heroMobileImg from "@/assets/galeria/portfolio-5.webp.asset.json";
 
 interface HeroProps {
   eyebrow?: string;
@@ -8,8 +9,10 @@ interface HeroProps {
   cta?: ReactNode;
   proofs?: string[];
   imageUrl?: string;
+  imageUrlMobile?: string;
   imageAlt?: string;
 }
+
 
 export function Hero({
   eyebrow,
@@ -18,8 +21,10 @@ export function Hero({
   cta,
   proofs,
   imageUrl = heroImg.url,
+  imageUrlMobile = heroMobileImg.url,
   imageAlt = "Arquitetura de alto padrão HEYDT",
 }: HeroProps) {
+
   const ref = useRef<HTMLDivElement | null>(null);
   const imgRef = useRef<HTMLDivElement | null>(null);
   const contentRef = useRef<HTMLDivElement | null>(null);
@@ -84,17 +89,21 @@ export function Hero({
         className="absolute inset-0 -z-10 will-change-transform"
         style={{ transform: "scale(1.06)" }}
       >
-        <img
-          src={imageUrl}
-          alt={imageAlt}
-          className="h-full w-full object-cover"
-          style={{ transform: "translateY(var(--py, 0px))" }}
-          loading="eager"
-          fetchPriority="high"
-          width={1920}
-          height={1080}
-        />
+        <picture>
+          <source media="(max-width: 767px)" srcSet={imageUrlMobile} />
+          <img
+            src={imageUrl}
+            alt={imageAlt}
+            className="h-full w-full object-cover"
+            style={{ transform: "translateY(var(--py, 0px))" }}
+            loading="eager"
+            fetchPriority="high"
+            width={1920}
+            height={1080}
+          />
+        </picture>
       </div>
+
 
       {/* Camadas de overlay sofisticadas — azul escuro da marca */}
       {/* 1. Sombra inferior profunda para ancorar o texto */}
