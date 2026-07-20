@@ -1,13 +1,14 @@
-import { useEffect, useRef, type ReactNode } from "react";
+import { useEffect, useRef, type CSSProperties, type ReactNode } from "react";
 
 interface RevealProps {
   children: ReactNode;
   className?: string;
   delay?: number;
   as?: "div" | "section" | "article" | "header" | "figure" | "li" | "p" | "h2" | "h3" | "span";
+  style?: CSSProperties;
 }
 
-export function Reveal({ children, className = "", delay = 0, as: Tag = "div" }: RevealProps) {
+export function Reveal({ children, className = "", delay = 0, as: Tag = "div", style }: RevealProps) {
   const ref = useRef<HTMLElement | null>(null);
 
   useEffect(() => {
