@@ -6,6 +6,7 @@ import { Hero } from "@/components/Hero";
 
 import { CountUpStats } from "@/components/CountUpStats";
 import heroQuemSomos from "@/assets/hero-quem-somos.jpg.asset.json";
+import heroMobileImg from "@/assets/galeria/portfolio-5.webp.asset.json";
 import videoHistoria from "@/assets/quem-somos-dobra-2.mp4.asset.json";
 
 export const Route = createFileRoute("/quem-somos")({
