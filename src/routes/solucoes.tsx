@@ -103,8 +103,8 @@ function Solucoes() {
                     width={1200}
                     height={1500}
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-primary/70 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-                  <div className="absolute inset-x-0 bottom-0 translate-y-4 p-6 opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100">
+                  <div className="absolute inset-0 bg-gradient-to-t from-primary/70 via-transparent to-transparent opacity-100 transition-opacity duration-500 md:opacity-0 md:group-hover:opacity-100" />
+                  <div className="absolute inset-x-0 bottom-0 translate-y-0 p-6 opacity-100 transition-all duration-500 md:translate-y-4 md:opacity-0 md:group-hover:translate-y-0 md:group-hover:opacity-100">
                     <Link to="/fale-conosco" className="btn-primary bg-white text-primary hover:bg-white/90">
                       Fale agora com especialista
                     </Link>
