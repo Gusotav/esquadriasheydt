@@ -8,7 +8,7 @@ import heroMobileImg from "@/assets/galeria/portfolio-20.webp.asset.json";
 import residencial from "@/assets/obra-residencial-01.jpg.asset.json";
 import comercial from "@/assets/obra-comercial-02.jpg.asset.json";
 import corporativo from "@/assets/obra-comercial-01.jpg.asset.json";
-import lazer from "@/assets/obra-especial-01.jpg.asset.json";
+import lazer from "@/assets/Galeria_7-2.jpg.asset.json";
 
 export const Route = createFileRoute("/solucoes")({
   head: () => ({
