@@ -21,8 +21,10 @@ export function Hero({
   cta,
   proofs,
   imageUrl = heroImg.url,
+  imageUrlMobile = heroMobileImg.url,
   imageAlt = "Arquitetura de alto padrão HEYDT",
 }: HeroProps) {
+
   const ref = useRef<HTMLDivElement | null>(null);
   const imgRef = useRef<HTMLDivElement | null>(null);
   const contentRef = useRef<HTMLDivElement | null>(null);
