@@ -14,7 +14,7 @@ export function SectionHeader({ eyebrow, title, subtitle, align = "left", invert
   return (
     <div className={`max-w-3xl ${wrap} ${className}`}>
       {eyebrow && <p className={`eyebrow mb-5 ${align === "left" ? "hairline" : ""} ${eye}`}>{eyebrow}</p>}
-      <h2 className={`font-display text-[clamp(2rem,4.4vw,3.4rem)] leading-[1.05] ${invert ? "text-white" : "text-foreground"}`}>
+      <h2 className={`text-balance font-display text-[clamp(1.75rem,4.4vw,3.4rem)] leading-[1.08] break-words hyphens-auto ${invert ? "text-white" : "text-foreground"}`}>
         {title}
       </h2>
       {subtitle && <p className={`mt-5 text-base md:text-lg ${sub}`}>{subtitle}</p>}
