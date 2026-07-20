@@ -85,7 +85,7 @@ export function CountUpStats({ items, className = "", centered = false }: { item
   }
 
   return (
-    <ul ref={ref} className="mt-16 grid gap-10 md:grid-cols-4 md:gap-8">
+    <ul ref={ref} className={`mt-16 grid gap-10 md:grid-cols-4 md:gap-8 ${centered ? "text-center md:text-left" : ""} ${className}`}>
       {parsed.map((x, i) => {
         const isActive = !done[i] && values[i] > 0;
         return (
@@ -102,6 +102,7 @@ export function CountUpStats({ items, className = "", centered = false }: { item
             <span
               className={[
                 "mt-3 block h-px origin-left bg-white/40 transition-all duration-700",
+                centered ? "mx-auto md:mx-0" : "",
                 done[i] ? "w-16 bg-champagne/80" : isActive ? "w-16" : "w-10",
               ].join(" ")}
             />
