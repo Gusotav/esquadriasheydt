@@ -81,24 +81,24 @@ export function Navbar({ hideOverHero = false }: NavbarProps) {
 
         <button
           type="button"
-          className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-border md:hidden"
+          className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/30 md:hidden"
           onClick={() => setOpen((v) => !v)}
           aria-label="Abrir menu"
           aria-expanded={open}
         >
           <span className="relative block h-3 w-4">
             <span
-              className={`absolute left-0 top-0 h-px w-full bg-foreground transition-transform duration-300 ${
+              className={`absolute left-0 top-0 h-px w-full bg-white transition-transform duration-300 ${
                 open ? "translate-y-[6px] rotate-45" : ""
               }`}
             />
             <span
-              className={`absolute left-0 top-1/2 h-px w-full bg-foreground transition-opacity duration-300 ${
+              className={`absolute left-0 top-1/2 h-px w-full bg-white transition-opacity duration-300 ${
                 open ? "opacity-0" : "opacity-100"
               }`}
             />
             <span
-              className={`absolute bottom-0 left-0 h-px w-full bg-foreground transition-transform duration-300 ${
+              className={`absolute bottom-0 left-0 h-px w-full bg-white transition-transform duration-300 ${
                 open ? "-translate-y-[6px] -rotate-45" : ""
               }`}
             />
