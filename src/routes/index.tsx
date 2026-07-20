@@ -145,7 +145,7 @@ function HomePage() {
       </section>
 
       {/* SEÇÃO 3 — SOLUÇÕES */}
-      <section className="grid-texture bg-surface py-24 md:py-36">
+      <section className="bg-surface py-24 md:py-36">
         <div className="container-page">
           <Reveal>
             <SectionHeader
@@ -190,7 +190,7 @@ function HomePage() {
       </section>
 
       {/* SEÇÃO 4 — AUTORIDADE */}
-      <section className="grid-texture-invert bg-primary py-24 text-white md:py-36">
+      <section className="grid-texture-invert blue-glow bg-primary py-24 text-white md:py-36">
         <div className="container-page grid items-center gap-12 md:grid-cols-[1.1fr_0.9fr] md:gap-16 lg:gap-24">
           <Reveal className="order-2 md:order-1">
             <SectionHeader
@@ -261,7 +261,7 @@ function HomePage() {
       </section>
 
       {/* SEÇÃO 6 — FORMULÁRIO */}
-      <section className="grid-texture bg-surface py-24 md:py-36">
+      <section className="bg-surface py-24 md:py-36">
         <div className="container-page grid gap-16 md:grid-cols-[1fr_1.1fr] md:gap-24">
           <Reveal>
             <SectionHeader
