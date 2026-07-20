@@ -96,13 +96,13 @@ function QuemSomos() {
           <Reveal>
             <SectionHeader
               invert
+              className="text-center md:text-left"
               eyebrow="Força da estrutura"
               title={<>Estrutura projetada para a <em className="italic text-champagne">máxima performance.</em></>}
               subtitle="Grandes projetos exigem alta capacidade de entrega. Conheça os números que garantem a nossa precisão técnica."
             />
           </Reveal>
-          <CountUpStats items={numeros} />
-
+          <CountUpStats items={numeros} centered />
         </div>
       </section>
 
