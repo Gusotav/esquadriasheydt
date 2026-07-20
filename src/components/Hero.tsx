@@ -96,13 +96,13 @@ export function Hero({
         />
       </div>
 
-      {/* Camadas de overlay sofisticadas — tom quente/neutro, não azul */}
+      {/* Camadas de overlay sofisticadas — azul escuro da marca */}
       {/* 1. Sombra inferior profunda para ancorar o texto */}
       <div
         className="absolute inset-0 -z-10"
         style={{
           background:
-            "linear-gradient(180deg, rgba(20,16,14,0.15) 0%, rgba(20,16,14,0.35) 45%, rgba(15,12,10,0.85) 100%)",
+            "linear-gradient(180deg, oklch(0.36 0.14 255 / 0.15) 0%, oklch(0.36 0.14 255 / 0.38) 45%, oklch(0.2 0.08 255 / 0.9) 100%)",
         }}
       />
       {/* 2. Vinheta lateral esquerda para legibilidade do bloco de texto */}
@@ -110,15 +110,15 @@ export function Hero({
         className="absolute inset-y-0 left-0 -z-10 w-3/4"
         style={{
           background:
-            "linear-gradient(90deg, rgba(15,12,10,0.72) 0%, rgba(15,12,10,0.35) 45%, rgba(15,12,10,0) 100%)",
+            "linear-gradient(90deg, oklch(0.2 0.08 255 / 0.82) 0%, oklch(0.36 0.14 255 / 0.38) 45%, oklch(0.36 0.14 255 / 0) 100%)",
         }}
       />
-      {/* 3. Vinheta radial sutil de brilho quente */}
+      {/* 3. Vinheta radial sutil de profundidade azulada */}
       <div
         className="absolute inset-0 -z-10"
         style={{
           background:
-            "radial-gradient(120% 90% at 20% 70%, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0) 60%)",
+            "radial-gradient(120% 90% at 20% 70%, oklch(0.15 0.06 255 / 0.45) 0%, oklch(0.36 0.14 255 / 0) 60%)",
         }}
       />
       {/* 4. Fade discreto no topo para respiro atrás da navbar */}
@@ -126,7 +126,7 @@ export function Hero({
         className="absolute inset-x-0 top-0 -z-10 h-40"
         style={{
           background:
-            "linear-gradient(180deg, rgba(10,8,6,0.55) 0%, rgba(10,8,6,0) 100%)",
+            "linear-gradient(180deg, oklch(0.12 0.05 255 / 0.65) 0%, oklch(0.36 0.14 255 / 0) 100%)",
         }}
       />
       {/* 5. Grão sutil para textura editorial */}
