@@ -98,7 +98,7 @@ function Solucoes() {
       </section>
 
       {/* GRID DE SOLUÇÕES */}
-      <section className="py-20 md:py-28">
+      <section className="grid-texture py-20 md:py-28">
         <div className="container-page space-y-20 md:space-y-32">
           {solucoes.map((s, i) => (
             <article

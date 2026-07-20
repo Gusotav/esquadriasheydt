@@ -48,7 +48,7 @@ function FaleConosco() {
       </section>
 
       {/* FORMULÁRIO + CONTATOS */}
-      <section className="py-20 md:py-28">
+      <section className="grid-texture py-20 md:py-28">
         <div className="container-page grid gap-16 md:grid-cols-[1.15fr_1fr] md:gap-24">
           <Reveal>
             <SectionHeader
