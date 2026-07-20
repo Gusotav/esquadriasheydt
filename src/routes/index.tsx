@@ -98,6 +98,7 @@ function HomePage() {
             </Link>
           </>
         }
+        imageUrlMobile={heroMobileImg.url}
         proofs={[
           "Mais de 47 anos de mercado",
           "Sede própria com 1.000 m² de parque fabril",
