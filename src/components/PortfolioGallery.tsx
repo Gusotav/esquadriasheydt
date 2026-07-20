@@ -75,16 +75,15 @@ function GalleryCell({ item, index, total }: { item: Item; index: number; total:
     <Reveal
       delay={(index % 4) * 80}
       className={`${layout.mobile} ${layout.desktop} group relative overflow-hidden rounded-xl bg-muted`}
+      style={{ aspectRatio: layout.aspect }}
     >
-      <div style={{ aspectRatio: layout.aspect }} className="relative h-full w-full">
-        <img
-          src={item.url}
-          alt={item.alt}
-          loading={index < 4 ? "eager" : "lazy"}
-          decoding="async"
-          className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1200ms] group-hover:scale-[1.04]"
-        />
-      </div>
+      <img
+        src={item.url}
+        alt={item.alt}
+        loading={index < 4 ? "eager" : "lazy"}
+        decoding="async"
+        className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1200ms] group-hover:scale-[1.04]"
+      />
     </Reveal>
   );
 }
