@@ -161,7 +161,7 @@ export function Hero({
               {eyebrow}
             </p>
           )}
-          <h1 className="font-display font-light text-[clamp(2.2rem,5.8vw,5rem)] leading-[1.06] tracking-[-0.01em] text-white [text-shadow:0_2px_30px_rgb(0_0_0/0.55)]">
+          <h1 className="text-balance font-display font-light text-[clamp(1.85rem,5.6vw,5rem)] leading-[1.08] tracking-[-0.01em] text-white [text-shadow:0_2px_30px_rgb(0_0_0/0.55)]">
             {title}
           </h1>
           {subtitle && (
