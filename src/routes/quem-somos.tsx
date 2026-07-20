@@ -18,7 +18,7 @@ export const Route = createFileRoute("/quem-somos")({
           "Fundada em 1978 em Maravilha/SC, a HEYDT reúne 47 anos de tradição, parque fabril próprio e mais de 50 especialistas dedicados ao alto padrão.",
       },
       { property: "og:title", content: "Quem Somos — HEYDT Esquadrias" },
-      { property: "og:image", content: heroInterior.url },
+      { property: "og:image", content: heroQuemSomos.url },
     ],
   }),
   component: QuemSomos,
@@ -40,34 +40,28 @@ const valores = [
 
 function QuemSomos() {
   return (
-    <SiteLayout>
-      {/* HERO institucional */}
-      <section className="relative isolate overflow-hidden bg-primary text-white">
-        <div className="absolute inset-0 -z-10">
-          <img
-            src={heroInterior.url}
-            alt="Interior de projeto residencial de alto padrão"
-            className="h-full w-full object-cover opacity-55"
-            loading="eager"
-            fetchPriority="high"
-            width={1600}
-            height={1200}
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-primary/70 via-primary/60 to-primary/85" />
-        </div>
-        <div className="container-page grid min-h-[70svh] items-end pb-16 pt-32 md:pb-24 md:pt-40">
-          <Reveal className="max-w-3xl">
-            <p className="eyebrow mb-6 text-white/70 hairline">Quem somos · Desde 1978</p>
-            <h1 className="font-display text-[clamp(2.4rem,5.4vw,4.6rem)] leading-[1.05] text-white">
-              A tradição de quem molda o alto padrão <em className="italic text-champagne">há mais de 45 anos.</em>
-            </h1>
-            <p className="mt-6 max-w-xl text-base text-white/80 md:text-lg">
-              Nossa história é construída sobre a precisão da engenharia, a robustez da nossa indústria
-              e o compromisso inegociável com o conforto da sua família.
-            </p>
-          </Reveal>
-        </div>
-      </section>
+    <SiteLayout hideNavOverHero>
+      <Hero
+        eyebrow="Quem somos · Desde 1978"
+        title={
+          <>
+            <span className="block whitespace-nowrap">A tradição de quem molda</span>
+            <span className="block whitespace-nowrap">
+              o alto padrão{" "}
+              <em className="font-display italic text-champagne">há 47 anos.</em>
+            </span>
+          </>
+        }
+        subtitle="Nossa história é construída sobre a precisão da engenharia, a robustez da nossa indústria e o compromisso inegociável com o conforto da sua família."
+        imageUrl={heroQuemSomos.url}
+        imageAlt="Equipe HEYDT Esquadrias na sede em Maravilha/SC"
+        proofs={[
+          "Fundada em 1978, em Maravilha/SC",
+          "50+ especialistas em 13 setores",
+          "Parque fabril próprio de 1.000 m²",
+        ]}
+      />
+
 
       {/* HISTÓRIA */}
       <section className="py-24 md:py-36">
