@@ -16,17 +16,17 @@ interface NavbarProps {
 
 export function Navbar({ hideOverHero = false }: NavbarProps) {
   const pathname = useRouterState({ select: (s) => s.location.pathname });
-  const [visible, setVisible] = useState(!hideOverHero);
+  const [scrolled, setScrolled] = useState(!hideOverHero);
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
     if (!hideOverHero) {
-      setVisible(true);
+      setScrolled(true);
       return;
     }
     const onScroll = () => {
       const threshold = Math.max(window.innerHeight * 0.85, 500);
-      setVisible(window.scrollY > threshold);
+      setScrolled(window.scrollY > threshold);
     };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
@@ -37,13 +37,18 @@ export function Navbar({ hideOverHero = false }: NavbarProps) {
     setOpen(false);
   }, [pathname]);
 
+  // Over-hero state: transparent, minimal, subtle. After scroll: solid brand color.
+  const overHero = hideOverHero && !scrolled;
+
   return (
     <header
-      className={`${hideOverHero ? "fixed" : "sticky"} inset-x-0 top-0 z-50 border-b border-white/10 bg-primary/95 text-primary-foreground backdrop-blur-md transition-all duration-500 ${
-        visible ? "translate-y-0 opacity-100" : "-translate-y-full opacity-0 pointer-events-none"
+      className={`${hideOverHero ? "fixed" : "sticky"} inset-x-0 top-0 z-50 text-primary-foreground transition-all duration-500 ${
+        overHero
+          ? "bg-transparent border-b border-white/5 backdrop-blur-[2px]"
+          : "bg-primary/95 border-b border-white/10 backdrop-blur-md"
       }`}
-      aria-hidden={!visible}
     >
+
       <div className="container-page flex h-16 items-center justify-between gap-6 md:h-20">
         <Link to="/" className="flex shrink-0 items-center" aria-label="HEYDT Esquadrias — Home">
           <img
