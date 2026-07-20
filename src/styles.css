@@ -228,6 +228,40 @@
   }
 }
 
+@utility grid-texture {
+  position: relative;
+  isolation: isolate;
+  &::before {
+    content: "";
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(to right, color-mix(in oklab, var(--color-primary) 8%, transparent) 1px, transparent 1px),
+      linear-gradient(to bottom, color-mix(in oklab, var(--color-primary) 8%, transparent) 1px, transparent 1px);
+    background-size: 56px 56px;
+    mask-image: radial-gradient(ellipse at center, black 40%, transparent 85%);
+    pointer-events: none;
+    z-index: -1;
+    opacity: 0.55;
+  }
+}
+
+@utility grid-texture-invert {
+  position: relative;
+  isolation: isolate;
+  &::before {
+    content: "";
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(to right, rgba(255,255,255,0.06) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255,255,255,0.06) 1px, transparent 1px);
+    background-size: 64px 64px;
+    mask-image: radial-gradient(ellipse at center, black 40%, transparent 90%);
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.5;
+  }
+
+
 @keyframes float-slow {
   0%, 100% { transform: translate3d(0,0,0); }
   50% { transform: translate3d(0, -6px, 0); }
