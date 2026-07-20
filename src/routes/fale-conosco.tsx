@@ -62,7 +62,7 @@ function FaleConosco() {
               title={<>Um especialista <em className="italic">para o<br className="md:hidden" /> seu projeto.</em></>}
               subtitle="Preencha o formulário e receba o retorno da nossa equipe consultiva."
             />
-            <div className="mt-10 rounded-2xl border border-border bg-card p-8 md:p-12">
+            <div className="mt-10 rounded-2xl border border-border bg-card p-6 md:p-12">
               <LeadForm cta="Solicitar Atendimento Exclusivo" />
             </div>
           </Reveal>
@@ -121,7 +121,7 @@ function FaleConosco() {
               })}
             </ul>
 
-            <div className="mt-10 rounded-2xl border border-border bg-surface p-8">
+            <div className="mt-10 rounded-2xl border border-border bg-surface p-6 md:p-8">
               <div className="flex items-start gap-4">
                 <span className="mt-0.5 inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-border bg-white text-primary">
                   <MapPin className="h-4 w-4" aria-hidden="true" />
