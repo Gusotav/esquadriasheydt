@@ -98,11 +98,18 @@ export function Hero({
         />
       </div>
 
-      {/* Overlay cinematográfico: vinheta radial + degradê vertical para leitura */}
+      {/* Overlay cinematográfico: vinheta assimétrica reforçada à esquerda + degradês */}
       <div
         className="absolute inset-0 -z-10"
         style={{
-          background: `radial-gradient(ellipse at 50% 55%, oklch(0.14 0.05 255 / ${overlay * 0.55}) 0%, oklch(0.12 0.05 255 / ${Math.min(overlay + 0.15, 0.9)}) 70%, oklch(0.09 0.04 255 / ${Math.min(overlay + 0.3, 0.96)}) 100%)`,
+          background: `radial-gradient(ellipse at 25% 55%, oklch(0.12 0.05 255 / ${Math.min(overlay + 0.15, 0.9)}) 0%, oklch(0.10 0.04 255 / ${Math.min(overlay + 0.25, 0.94)}) 60%, oklch(0.08 0.04 255 / ${Math.min(overlay + 0.35, 0.96)}) 100%)`,
+        }}
+      />
+      <div
+        className="absolute inset-y-0 left-0 -z-10 w-2/3"
+        style={{
+          background:
+            "linear-gradient(90deg, oklch(0.09 0.04 255 / 0.75) 0%, oklch(0.09 0.04 255 / 0) 100%)",
         }}
       />
       <div
@@ -112,6 +119,7 @@ export function Hero({
             "linear-gradient(180deg, oklch(0.10 0.04 255 / 0.85) 0%, oklch(0.10 0.04 255 / 0) 100%)",
         }}
       />
+
       <div
         className="absolute inset-x-0 bottom-0 -z-10 h-72"
         style={{
