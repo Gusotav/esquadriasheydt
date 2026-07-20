@@ -73,9 +73,17 @@ export function Footer() {
       </div>
 
       <div className="border-t border-white/10">
-        <div className="container-page flex flex-col gap-2 py-5 text-xs text-primary-foreground/60 md:flex-row md:items-center md:justify-between">
+        <div className="container-page flex flex-col gap-3 py-5 text-xs text-primary-foreground/60 md:flex-row md:items-center md:justify-between">
           <p>© {new Date().getFullYear()} HEYDT Esquadrias. Todos os direitos reservados.</p>
-          <p className="tracking-[0.2em] uppercase">Esquadrias · Fachadas · Vidros</p>
+          <div className="flex items-center gap-5">
+            <Link
+              to="/politica-de-privacidade"
+              className="link-underline text-primary-foreground/70 hover:text-white"
+            >
+              Política de Privacidade
+            </Link>
+            <p className="tracking-[0.2em] uppercase">Esquadrias · Fachadas · Vidros</p>
+          </div>
         </div>
       </div>
     </footer>

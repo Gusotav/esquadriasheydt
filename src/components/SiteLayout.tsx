@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import { Navbar } from "./Navbar";
 import { Footer } from "./Footer";
+import { CookieBanner } from "./CookieBanner";
 
 interface SiteLayoutProps {
   children: ReactNode;
@@ -13,6 +14,7 @@ export function SiteLayout({ children, hideNavOverHero = false }: SiteLayoutProp
       <Navbar hideOverHero={hideNavOverHero} />
       <main className="flex-1">{children}</main>
       <Footer />
+      <CookieBanner />
     </div>
   );
 }
