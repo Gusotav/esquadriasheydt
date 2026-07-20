@@ -12,7 +12,6 @@ const INTERVAL_MS = 4200;
 
 export function SolucoesGrid({ items }: { items: SolucaoItem[] }) {
   const [active, setActive] = useState(0);
-  const [hovered, setHovered] = useState<number | null>(null);
   const [reducedMotion, setReducedMotion] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
   const [inView, setInView] = useState(false);
@@ -37,14 +36,12 @@ export function SolucoesGrid({ items }: { items: SolucaoItem[] }) {
   }, []);
 
   useEffect(() => {
-    if (reducedMotion || !inView || hovered !== null) return;
+    if (reducedMotion || !inView) return;
     const id = window.setInterval(() => {
       setActive((prev) => (prev + 1) % items.length);
     }, INTERVAL_MS);
     return () => window.clearInterval(id);
-  }, [reducedMotion, inView, hovered, items.length]);
-
-  const activeIndex = hovered !== null ? hovered : active;
+  }, [reducedMotion, inView, items.length]);
 
   return (
     <div
@@ -52,20 +49,17 @@ export function SolucoesGrid({ items }: { items: SolucaoItem[] }) {
       className="mt-16 grid gap-px overflow-hidden rounded-2xl border border-border bg-border md:grid-cols-2"
     >
       {items.map((s, i) => {
-        const isActive = i === activeIndex;
+        const isActive = i === active;
         return (
           <div
             key={s.n}
-            onMouseEnter={() => setHovered(i)}
-            onMouseLeave={() => setHovered(null)}
-            onFocus={() => setHovered(i)}
-            onBlur={() => setHovered(null)}
             className={[
               "group relative overflow-hidden p-8 md:p-12",
               "transition-[background-color,color,transform,box-shadow] duration-700 ease-[cubic-bezier(0.22,0.61,0.36,1)]",
+              "hover:shadow-[0_20px_50px_-20px_rgba(0,0,0,0.12)]",
               isActive
                 ? "bg-primary text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_20px_60px_-30px_rgba(0,0,0,0.6)] md:scale-[1.005]"
-                : "bg-background text-foreground",
+                : "bg-background text-foreground hover:bg-surface",
             ].join(" ")}
           >
             {/* subtle inner glow when active */}
@@ -144,12 +138,10 @@ export function SolucoesGrid({ items }: { items: SolucaoItem[] }) {
               aria-hidden
               className={[
                 "absolute inset-x-0 bottom-0 h-[2px] origin-left bg-champagne/80 transition-opacity duration-500",
-                isActive && !reducedMotion && hovered === null
-                  ? "opacity-100"
-                  : "opacity-0",
+                isActive && !reducedMotion ? "opacity-100" : "opacity-0",
               ].join(" ")}
               style={
-                isActive && !reducedMotion && hovered === null
+                isActive && !reducedMotion
                   ? {
                       animation: `solucoes-progress ${INTERVAL_MS}ms linear forwards`,
                     }
