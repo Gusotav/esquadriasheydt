@@ -133,7 +133,34 @@ function spanFor(index: number, total: number): string {
 
 export function PortfolioGallery() {
   const [expanded, setExpanded] = useState(false);
+  const [lightbox, setLightbox] = useState<number | null>(null);
   const items = expanded ? ALL : ALL.slice(0, INITIAL);
+
+  const close = useCallback(() => setLightbox(null), []);
+  const prev = useCallback(
+    () => setLightbox((i) => (i === null ? i : (i - 1 + ALL.length) % ALL.length)),
+    [],
+  );
+  const next = useCallback(
+    () => setLightbox((i) => (i === null ? i : (i + 1) % ALL.length)),
+    [],
+  );
+
+  useEffect(() => {
+    if (lightbox === null) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") close();
+      else if (e.key === "ArrowLeft") prev();
+      else if (e.key === "ArrowRight") next();
+    };
+    window.addEventListener("keydown", onKey);
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      window.removeEventListener("keydown", onKey);
+      document.body.style.overflow = prevOverflow;
+    };
+  }, [lightbox, close, prev, next]);
 
   return (
     <>
@@ -144,13 +171,32 @@ export function PortfolioGallery() {
             delay={(i % 4) * 60}
             className={`group relative overflow-hidden rounded-xl bg-muted ${spanFor(i, items.length)}`}
           >
-            <img
-              src={item.url}
-              alt={item.alt}
-              loading={i < 4 ? "eager" : "lazy"}
-              decoding="async"
-              className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1200ms] group-hover:scale-[1.04]"
-            />
+            <button
+              type="button"
+              onClick={() => setLightbox(ALL.indexOf(item))}
+              className="absolute inset-0 h-full w-full cursor-zoom-in focus:outline-none focus-visible:ring-2 focus-visible:ring-white/70"
+              aria-label={`Ampliar: ${item.alt}`}
+            >
+              <img
+                src={item.url}
+                alt={item.alt}
+                loading={i < 4 ? "eager" : "lazy"}
+                decoding="async"
+                className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1200ms] group-hover:scale-[1.04]"
+              />
+              {/* Indicativo sutil — só aparece no hover */}
+              <span
+                aria-hidden
+                className="pointer-events-none absolute inset-0 bg-gradient-to-t from-primary/50 via-primary/10 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+              />
+              <span
+                aria-hidden
+                className="pointer-events-none absolute bottom-3 right-3 inline-flex items-center gap-1.5 rounded-full border border-white/25 bg-black/35 px-2.5 py-1 text-[11px] font-medium tracking-wide text-white opacity-0 backdrop-blur-sm transition-opacity duration-300 group-hover:opacity-100"
+              >
+                <Expand className="h-3 w-3" />
+                Ampliar
+              </span>
+            </button>
           </Reveal>
         ))}
       </div>
@@ -166,6 +212,55 @@ export function PortfolioGallery() {
           </button>
         </Reveal>
       )}
+
+      {lightbox !== null && (
+        <div
+          role="dialog"
+          aria-modal="true"
+          aria-label="Visualização ampliada"
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 backdrop-blur-sm animate-in fade-in duration-200"
+          onClick={close}
+        >
+          <button
+            type="button"
+            onClick={close}
+            aria-label="Fechar"
+            className="absolute right-4 top-4 z-10 inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/20 bg-white/10 text-white transition hover:bg-white/20"
+          >
+            <X className="h-5 w-5" />
+          </button>
+          <button
+            type="button"
+            onClick={(e) => { e.stopPropagation(); prev(); }}
+            aria-label="Imagem anterior"
+            className="absolute left-3 md:left-6 z-10 inline-flex h-12 w-12 items-center justify-center rounded-full border border-white/20 bg-white/10 text-white transition hover:bg-white/20"
+          >
+            <ChevronLeft className="h-6 w-6" />
+          </button>
+          <button
+            type="button"
+            onClick={(e) => { e.stopPropagation(); next(); }}
+            aria-label="Próxima imagem"
+            className="absolute right-3 md:right-6 z-10 inline-flex h-12 w-12 items-center justify-center rounded-full border border-white/20 bg-white/10 text-white transition hover:bg-white/20"
+          >
+            <ChevronRight className="h-6 w-6" />
+          </button>
+          <figure
+            className="relative flex h-full w-full items-center justify-center p-6 md:p-12"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <img
+              src={ALL[lightbox].url}
+              alt={ALL[lightbox].alt}
+              className="max-h-full max-w-full object-contain shadow-2xl"
+            />
+            <figcaption className="absolute bottom-4 left-1/2 -translate-x-1/2 rounded-full bg-black/50 px-4 py-1.5 text-xs text-white/80 backdrop-blur-sm">
+              {lightbox + 1} / {ALL.length}
+            </figcaption>
+          </figure>
+        </div>
+      )}
     </>
   );
 }
+
