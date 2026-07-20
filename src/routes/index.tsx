@@ -75,8 +75,10 @@ function HomePage() {
           <>
             O conforto e a sofisticação
             <br />
-            que o seu projeto{" "}
-            <em className="font-display italic text-champagne">exige.</em>
+            <span className="whitespace-nowrap">
+              que o seu projeto de alto padrão{" "}
+              <em className="font-display italic text-champagne">exige.</em>
+            </span>
           </>
         }
         subtitle="Há mais de 47 anos, a HEYDT entrega engenharia, segurança e acabamento impecável em esquadrias e fachadas para as obras mais exigentes do Oeste catarinense."
