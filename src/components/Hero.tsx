@@ -98,11 +98,18 @@ export function Hero({
         />
       </div>
 
-      {/* Overlay cinematográfico: vinheta radial + degradê vertical para leitura */}
+      {/* Overlay cinematográfico: vinheta assimétrica reforçada à esquerda + degradês */}
       <div
         className="absolute inset-0 -z-10"
         style={{
-          background: `radial-gradient(ellipse at 50% 55%, oklch(0.14 0.05 255 / ${overlay * 0.55}) 0%, oklch(0.12 0.05 255 / ${Math.min(overlay + 0.15, 0.9)}) 70%, oklch(0.09 0.04 255 / ${Math.min(overlay + 0.3, 0.96)}) 100%)`,
+          background: `radial-gradient(ellipse at 25% 55%, oklch(0.12 0.05 255 / ${Math.min(overlay + 0.15, 0.9)}) 0%, oklch(0.10 0.04 255 / ${Math.min(overlay + 0.25, 0.94)}) 60%, oklch(0.08 0.04 255 / ${Math.min(overlay + 0.35, 0.96)}) 100%)`,
+        }}
+      />
+      <div
+        className="absolute inset-y-0 left-0 -z-10 w-2/3"
+        style={{
+          background:
+            "linear-gradient(90deg, oklch(0.09 0.04 255 / 0.75) 0%, oklch(0.09 0.04 255 / 0) 100%)",
         }}
       />
       <div
@@ -112,6 +119,7 @@ export function Hero({
             "linear-gradient(180deg, oklch(0.10 0.04 255 / 0.85) 0%, oklch(0.10 0.04 255 / 0) 100%)",
         }}
       />
+
       <div
         className="absolute inset-x-0 bottom-0 -z-10 h-72"
         style={{
@@ -137,32 +145,32 @@ export function Hero({
 
       <div
         ref={contentRef}
-        className="container-page relative z-0 flex w-full flex-col items-center px-6 py-32 text-center md:py-40"
+        className="container-page relative z-0 flex w-full flex-col items-start px-6 py-32 text-left md:py-40"
       >
-        <div className="mx-auto flex max-w-4xl flex-col items-center">
+        <div className="flex w-full max-w-3xl flex-col items-start">
           {eyebrow && (
             <p className="mb-8 inline-flex items-center gap-3 rounded-full border border-white/25 bg-white/10 px-5 py-2 text-[11px] font-medium uppercase tracking-[0.32em] text-white backdrop-blur-md">
               <span className="block h-px w-6 bg-champagne" />
               {eyebrow}
             </p>
           )}
-          <h1 className="text-balance font-display font-light text-[clamp(2.6rem,6.4vw,5.75rem)] leading-[1.04] tracking-[-0.01em] text-white [text-shadow:0_2px_30px_rgb(0_0_0/0.45)]">
+          <h1 className="text-balance font-display font-light text-[clamp(2.6rem,6.2vw,5.5rem)] leading-[1.04] tracking-[-0.01em] text-white [text-shadow:0_2px_30px_rgb(0_0_0/0.45)]">
             {title}
           </h1>
           {subtitle && (
-            <p className="mt-8 max-w-2xl text-pretty text-base leading-relaxed text-white/90 md:text-lg [text-shadow:0_1px_18px_rgb(0_0_0/0.5)]">
+            <p className="mt-8 max-w-xl text-pretty text-base leading-relaxed text-white/90 md:text-lg [text-shadow:0_1px_18px_rgb(0_0_0/0.5)]">
               {subtitle}
             </p>
           )}
           {cta && (
-            <div className="mt-10 flex flex-wrap items-center justify-center gap-4">{cta}</div>
+            <div className="mt-10 flex flex-wrap items-center gap-4">{cta}</div>
           )}
           {proofs && proofs.length > 0 && (
-            <ul className="mt-14 grid w-full max-w-3xl gap-px overflow-hidden rounded-2xl border border-white/20 bg-white/10 backdrop-blur-md sm:grid-cols-3">
+            <ul className="mt-14 grid w-full max-w-2xl gap-px overflow-hidden rounded-2xl border border-white/20 bg-white/10 backdrop-blur-md sm:grid-cols-3">
               {proofs.map((p) => (
                 <li
                   key={p}
-                  className="flex flex-col items-center gap-3 bg-white/5 px-5 py-6 text-center"
+                  className="flex flex-col items-start gap-3 bg-white/5 px-5 py-6 text-left"
                 >
                   <span className="block h-px w-8 bg-champagne" />
                   <span className="text-[13px] font-medium leading-snug text-white">{p}</span>
@@ -172,6 +180,7 @@ export function Hero({
           )}
         </div>
       </div>
+
 
       {/* scroll cue */}
       <div className="pointer-events-none absolute bottom-6 left-1/2 z-10 -translate-x-1/2 text-white/70">
