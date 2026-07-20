@@ -18,6 +18,16 @@ import p15 from "@/assets/galeria/portfolio-15.webp.asset.json";
 import p16 from "@/assets/galeria/portfolio-16.webp.asset.json";
 import p17 from "@/assets/galeria/portfolio-17.webp.asset.json";
 import p18 from "@/assets/galeria/portfolio-18.webp.asset.json";
+import p19 from "@/assets/galeria/portfolio-19.webp.asset.json";
+import p20 from "@/assets/galeria/portfolio-20.webp.asset.json";
+import p21 from "@/assets/galeria/portfolio-21.webp.asset.json";
+import p22 from "@/assets/galeria/portfolio-22.webp.asset.json";
+import p23 from "@/assets/galeria/portfolio-23.webp.asset.json";
+import p24 from "@/assets/galeria/portfolio-24.webp.asset.json";
+import p25 from "@/assets/galeria/portfolio-25.webp.asset.json";
+import p26 from "@/assets/galeria/portfolio-26.webp.asset.json";
+import p27 from "@/assets/galeria/portfolio-27.webp.asset.json";
+import p28 from "@/assets/galeria/portfolio-28.webp.asset.json";
 
 type Item = { url: string; alt: string };
 
@@ -40,33 +50,80 @@ const ALL: Item[] = [
   { url: p17.url, alt: "Lobby corporativo com pele de vidro estruturada" },
   { url: p18.url, alt: "Fachada comercial envidraçada — Grupo Cloud" },
   { url: p8.url, alt: "Porta pivotante em alumínio preto com veneziana" },
+  { url: p19.url, alt: "Fachada comercial OdontoTop com pele de vidro" },
+  { url: p20.url, alt: "Fachada clínica SIEL & GERA com estrutura de vidro" },
+  { url: p21.url, alt: "Sala de estar com escada em mármore e guarda-corpo de vidro" },
+  { url: p22.url, alt: "Vista superior de sala com escadaria em mármore" },
+  { url: p23.url, alt: "Fachada Hospital do Dente com esquadrias verticais" },
+  { url: p24.url, alt: "Cabana A-frame com fachada envidraçada preta" },
+  { url: p25.url, alt: "Pergolado metálico com ripado de madeira" },
+  { url: p26.url, alt: "Residência branca com brises e amplos vãos" },
+  { url: p27.url, alt: "Fachada corporativa TenBrasil com pele de vidro espelhada" },
+  { url: p28.url, alt: "Escada com guarda-corpo de vidro e parede de tijolos" },
 ];
 
 const INITIAL = 8;
 
-// Bento mosaic para exatamente 8 tiles — 4 cols × 4 rows, sem espaços vazios.
-const BENTO = [
-  "col-span-2 row-span-2 md:col-span-2 md:row-span-2", // 1 — destaque grande
-  "col-span-2 row-span-1 md:col-span-1 md:row-span-1", // 2
-  "col-span-2 row-span-2 md:col-span-1 md:row-span-2", // 3 — portrait
-  "col-span-2 row-span-1 md:col-span-1 md:row-span-1", // 4
-  "col-span-2 row-span-2 md:col-span-1 md:row-span-2", // 5 — portrait
-  "col-span-2 row-span-1 md:col-span-2 md:row-span-1", // 6 — landscape
-  "col-span-2 row-span-2 md:col-span-1 md:row-span-2", // 7 — portrait
-  "col-span-2 row-span-1 md:col-span-2 md:row-span-1", // 8 — landscape
+// Desktop bento — ciclo de 8 tiles que tila perfeitamente em 4 colunas × 4 linhas.
+const BENTO_DESKTOP = [
+  "md:col-span-2 md:row-span-2",
+  "md:col-span-1 md:row-span-1",
+  "md:col-span-1 md:row-span-2",
+  "md:col-span-1 md:row-span-1",
+  "md:col-span-1 md:row-span-2",
+  "md:col-span-2 md:row-span-1",
+  "md:col-span-1 md:row-span-2",
+  "md:col-span-2 md:row-span-1",
 ];
+
+// Cauda para quando o total não é múltiplo de 8 — preenche 4 colunas × 2 linhas com 4 itens.
+const BENTO_DESKTOP_TAIL_4 = [
+  "md:col-span-2 md:row-span-2",
+  "md:col-span-1 md:row-span-1",
+  "md:col-span-1 md:row-span-1",
+  "md:col-span-2 md:row-span-1",
+];
+
+// Mobile bento — 2 colunas, ciclo de 4 itens.
+const BENTO_MOBILE = [
+  "col-span-2 row-span-2",
+  "col-span-1 row-span-1",
+  "col-span-1 row-span-1",
+  "col-span-2 row-span-1",
+];
+
+function spanFor(index: number, total: number): string {
+  const mobile = BENTO_MOBILE[index % BENTO_MOBILE.length];
+
+  const fullCycles = Math.floor(total / BENTO_DESKTOP.length);
+  const tailStart = fullCycles * BENTO_DESKTOP.length;
+  const tailLen = total - tailStart;
+
+  let desktop: string;
+  if (index < tailStart) {
+    desktop = BENTO_DESKTOP[index % BENTO_DESKTOP.length];
+  } else if (tailLen === 4) {
+    desktop = BENTO_DESKTOP_TAIL_4[index - tailStart];
+  } else {
+    // fallback — mantém o ciclo padrão
+    desktop = BENTO_DESKTOP[index % BENTO_DESKTOP.length];
+  }
+
+  return `${mobile} ${desktop}`;
+}
 
 export function PortfolioGallery() {
   const [expanded, setExpanded] = useState(false);
+  const items = expanded ? ALL : ALL.slice(0, INITIAL);
 
   return (
     <>
-      <div className="mt-16 grid grid-cols-4 grid-rows-8 gap-2 md:mt-24 md:aspect-[5/4] md:grid-cols-4 md:grid-rows-4 md:gap-3">
-        {ALL.slice(0, INITIAL).map((item, i) => (
+      <div className="mt-16 grid grid-cols-2 gap-2 [grid-auto-rows:150px] md:mt-24 md:grid-cols-4 md:gap-3 md:[grid-auto-rows:200px] xl:[grid-auto-rows:230px]">
+        {items.map((item, i) => (
           <Reveal
             key={item.url}
-            delay={(i % 4) * 80}
-            className={`group relative overflow-hidden rounded-xl bg-muted ${BENTO[i]}`}
+            delay={(i % 4) * 60}
+            className={`group relative overflow-hidden rounded-xl bg-muted ${spanFor(i, items.length)}`}
           >
             <img
               src={item.url}
@@ -78,26 +135,6 @@ export function PortfolioGallery() {
           </Reveal>
         ))}
       </div>
-
-      {expanded && (
-        <div className="mt-3 grid grid-cols-2 gap-2 md:mt-3 md:grid-cols-4 md:gap-3">
-          {ALL.slice(INITIAL).map((item, i) => (
-            <Reveal
-              key={item.url}
-              delay={(i % 4) * 80}
-              className="group relative aspect-square overflow-hidden rounded-xl bg-muted"
-            >
-              <img
-                src={item.url}
-                alt={item.alt}
-                loading="lazy"
-                decoding="async"
-                className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1200ms] group-hover:scale-[1.04]"
-              />
-            </Reveal>
-          ))}
-        </div>
-      )}
 
       {ALL.length > INITIAL && (
         <Reveal className="mt-14 flex justify-center">
