@@ -68,7 +68,7 @@ function QuemSomos() {
 
       {/* HISTÓRIA */}
       <section className="py-24 md:py-36">
-        <div className="container-page grid gap-12 md:grid-cols-[1fr_1.2fr] md:items-center md:gap-20">
+        <div className="container-page grid gap-12 md:grid-cols-[1.15fr_0.85fr] md:items-center md:gap-20">
           <Reveal>
             <SectionHeader
               eyebrow="Nossa história"
@@ -77,18 +77,21 @@ function QuemSomos() {
             />
           </Reveal>
           <Reveal delay={120}>
-            <div className="relative overflow-hidden rounded-2xl bg-black/5 shadow-xl ring-1 ring-border">
-              <video
-                className="aspect-[4/5] w-full object-cover md:aspect-[4/3]"
-                src={videoHistoria.url}
-                controls
-                playsInline
-                preload="metadata"
-              />
+            <div className="mx-auto w-full max-w-[360px]">
+              <div className="relative aspect-[9/16] overflow-hidden rounded-2xl bg-black shadow-xl ring-1 ring-border">
+                <video
+                  className="absolute inset-0 h-full w-full object-contain"
+                  src={videoHistoria.url}
+                  controls
+                  playsInline
+                  preload="metadata"
+                />
+              </div>
             </div>
           </Reveal>
         </div>
       </section>
+
 
       {/* FORÇA DA ESTRUTURA */}
       <section className="grid-texture-invert blue-glow bg-primary py-24 text-white md:py-36">
