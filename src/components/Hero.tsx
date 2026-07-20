@@ -180,7 +180,7 @@ export function Hero({
                   className="flex flex-1 flex-col items-start gap-3 text-left"
                 >
                   <span className="block h-px w-6 bg-champagne" />
-                  <span className="text-[13px] font-medium leading-snug text-white/90 [text-shadow:0_1px_12px_rgb(0_0_0/0.5)]">
+                   <span className="text-[14px] font-medium leading-snug text-white/90 [text-shadow:0_1px_12px_rgb(0_0_0/0.5)] md:text-[15px]">
                     {p}
                   </span>
                 </li>
