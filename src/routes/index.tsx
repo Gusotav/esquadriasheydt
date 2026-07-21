@@ -7,6 +7,7 @@ import { LeadForm } from "@/components/LeadForm";
 import { PortfolioGallery } from "@/components/PortfolioGallery";
 import { SolucoesGrid } from "@/components/SolucoesGrid";
 
+import heroDesktopImg from "@/assets/hero-home-pergolado.jpg.asset.json";
 import heroMobileImg from "@/assets/galeria/portfolio-6.webp.asset.json";
 import videoDobra4 from "@/assets/home-dobra-4.mp4.asset.json";
 
