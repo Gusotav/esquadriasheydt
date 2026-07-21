@@ -154,13 +154,32 @@ export function PortfolioGallery() {
       else if (e.key === "ArrowRight") next();
     };
     window.addEventListener("keydown", onKey);
-    const prevOverflow = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-    document.documentElement.classList.add("lightbox-open");
+    const html = document.documentElement;
+    const body = document.body;
+    const scrollY = window.scrollY;
+    const prev1 = html.style.overflow;
+    const prev2 = body.style.overflow;
+    const prev3 = body.style.position;
+    const prev4 = body.style.top;
+    const prev5 = body.style.width;
+    const scrollbarW = window.innerWidth - html.clientWidth;
+    html.style.overflow = "hidden";
+    body.style.overflow = "hidden";
+    body.style.position = "fixed";
+    body.style.top = `-${scrollY}px`;
+    body.style.width = "100%";
+    if (scrollbarW > 0) body.style.paddingRight = `${scrollbarW}px`;
+    html.classList.add("lightbox-open");
     return () => {
       window.removeEventListener("keydown", onKey);
-      document.body.style.overflow = prevOverflow;
-      document.documentElement.classList.remove("lightbox-open");
+      html.style.overflow = prev1;
+      body.style.overflow = prev2;
+      body.style.position = prev3;
+      body.style.top = prev4;
+      body.style.width = prev5;
+      body.style.paddingRight = "";
+      html.classList.remove("lightbox-open");
+      window.scrollTo(0, scrollY);
     };
   }, [lightbox, close, prev, next]);
 
