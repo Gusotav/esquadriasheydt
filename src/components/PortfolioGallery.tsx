@@ -244,14 +244,16 @@ export function PortfolioGallery() {
           role="dialog"
           aria-modal="true"
           aria-label="Visualização ampliada"
-          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 backdrop-blur-sm animate-in fade-in duration-200"
+          className="fixed inset-0 z-[100] flex items-center justify-center overflow-hidden overscroll-contain bg-black/90 backdrop-blur-sm animate-in fade-in duration-200"
+          style={{ height: "100dvh" }}
           onClick={close}
+          onTouchMove={(e) => e.preventDefault()}
         >
           <button
             type="button"
             onClick={close}
             aria-label="Fechar"
-            className="absolute right-4 top-4 z-10 inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/20 bg-white/10 text-white transition hover:bg-white/20"
+            className="absolute right-4 top-4 z-20 inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/20 bg-white/10 text-white transition hover:bg-white/20"
           >
             <X className="h-5 w-5" />
           </button>
@@ -259,7 +261,7 @@ export function PortfolioGallery() {
             type="button"
             onClick={(e) => { e.stopPropagation(); prev(); }}
             aria-label="Imagem anterior"
-            className="absolute left-3 md:left-6 z-10 inline-flex h-12 w-12 items-center justify-center rounded-full border border-white/20 bg-white/10 text-white transition hover:bg-white/20"
+            className="absolute left-3 top-1/2 -translate-y-1/2 md:left-6 z-20 inline-flex h-12 w-12 items-center justify-center rounded-full border border-white/20 bg-white/10 text-white transition hover:bg-white/20"
           >
             <ChevronLeft className="h-6 w-6" />
           </button>
@@ -267,18 +269,19 @@ export function PortfolioGallery() {
             type="button"
             onClick={(e) => { e.stopPropagation(); next(); }}
             aria-label="Próxima imagem"
-            className="absolute right-3 md:right-6 z-10 inline-flex h-12 w-12 items-center justify-center rounded-full border border-white/20 bg-white/10 text-white transition hover:bg-white/20"
+            className="absolute right-3 top-1/2 -translate-y-1/2 md:right-6 z-20 inline-flex h-12 w-12 items-center justify-center rounded-full border border-white/20 bg-white/10 text-white transition hover:bg-white/20"
           >
             <ChevronRight className="h-6 w-6" />
           </button>
           <figure
-            className="relative flex h-full w-full items-center justify-center p-6 md:p-12"
+            className="relative flex items-center justify-center overflow-hidden px-16 py-16 md:px-24 md:py-20"
+            style={{ width: "100vw", height: "100dvh" }}
             onClick={(e) => e.stopPropagation()}
           >
             <img
               src={ALL[lightbox].url}
               alt={ALL[lightbox].alt}
-              className="max-h-full max-w-full object-contain shadow-2xl"
+              className="block h-auto w-auto max-h-full max-w-full object-contain shadow-2xl"
             />
             <figcaption className="absolute bottom-4 left-1/2 -translate-x-1/2 rounded-full bg-black/50 px-4 py-1.5 text-xs text-white/80 backdrop-blur-sm">
               {lightbox + 1} / {ALL.length}
