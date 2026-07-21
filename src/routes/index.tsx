@@ -104,6 +104,7 @@ function HomePage() {
             </Link>
           </>
         }
+        imageUrl={heroDesktopImg.url}
         imageUrlMobile={heroMobileImg.url}
         proofs={[
           "Mais de 47 anos de mercado",
