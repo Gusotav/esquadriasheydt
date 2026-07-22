@@ -90,18 +90,7 @@ function HomePage() {
             </span>
           </>
         }
-        subtitle={
-          <>
-            <span className="block md:hidden">
-              Da esquadria da sua casa à fachada do seu empreendimento: a HEYDT transforma PVC, alumínio e vidro em conforto térmico, acústico e segurança. Há mais de 47 anos, nossa fábrica entrega qualidade e desempenho em cada projeto.
-            </span>
-            <span className="hidden md:block">
-              <span className="block md:whitespace-nowrap">Da esquadria da sua casa à fachada do seu empreendimento:</span>
-              <span className="block md:whitespace-nowrap">a HEYDT transforma PVC, alumínio e vidro em conforto</span>
-              <span className="block md:whitespace-nowrap">térmico, acústico e segurança há mais de 47 anos.</span>
-            </span>
-          </>
-        }
+        subtitle="Da esquadria da sua casa à fachada do seu empreendimento: a HEYDT transforma PVC, alumínio e vidro em conforto térmico, acústico e segurança. Há mais de 47 anos, nossa fábrica entrega qualidade e desempenho em cada projeto."
         cta={
           <>
             <Link to="/fale-conosco" className="btn-primary bg-white text-primary hover:bg-white/90">
@@ -185,9 +174,22 @@ function HomePage() {
           <Reveal className="order-2 md:order-1">
             <SectionHeader
               invert
-              title="Do projeto à instalação: veja como trabalhamos."
-              subtitle="Cada etapa conduzida para levar o máximo de conforto através das esquadrias. Assista o vídeo para conhecer o caminho do seu pedido."
+              eyebrow="Autoridade técnica"
+              title={
+                <>
+                  Quem projeta o luxo, não abre mão da{" "}
+                  <em className="italic text-champagne">segurança HEYDT.</em>
+                </>
+              }
+              subtitle="Ouça o que fazemos e entenda, na prática, os detalhes técnicos que fazem as nossas esquadrias durarem gerações."
             />
+            <p className="mt-8 max-w-md text-sm leading-relaxed text-white/70">
+              Do desenho arquitetônico à instalação, cada etapa é conduzida por especialistas
+              treinados nos padrões europeus de acabamento e desempenho.
+            </p>
+            <p className="mt-8 text-xs uppercase tracking-[0.25em] text-white/50">
+              Detalhes técnicos · HEYDT
+            </p>
           </Reveal>
 
           <Reveal delay={140} className="order-1 flex justify-center md:order-2 md:justify-end">
