@@ -6,9 +6,9 @@ import { Hero } from "@/components/Hero";
 import heroSolucoes from "@/assets/hero-solucoes.jpg.asset.json";
 import heroMobileImg from "@/assets/galeria/portfolio-20.webp.asset.json";
 import residencial from "@/assets/obra-residencial-01.jpg.asset.json";
-import comercial from "@/assets/obra-comercial-02.jpg.asset.json";
-import corporativo from "@/assets/obra-comercial-01.jpg.asset.json";
-import lazer from "@/assets/Galeria_7-2.jpg.asset.json";
+import comercial from "@/assets/solucao-comercial.jpg.asset.json";
+import corporativo from "@/assets/solucao-corporativo.jpg.asset.json";
+import lazer from "@/assets/solucao-envidracamento.jpg.asset.json";
 import revestimento from "@/assets/revestimento-brise.jpg.asset.json";
 
 export const Route = createFileRoute("/solucoes")({
