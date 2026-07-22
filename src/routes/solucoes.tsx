@@ -9,6 +9,7 @@ import residencial from "@/assets/obra-residencial-01.jpg.asset.json";
 import comercial from "@/assets/obra-comercial-02.jpg.asset.json";
 import corporativo from "@/assets/obra-comercial-01.jpg.asset.json";
 import lazer from "@/assets/Galeria_7-2.jpg.asset.json";
+import revestimento from "@/assets/revestimento-brise.jpg.asset.json";
 
 export const Route = createFileRoute("/solucoes")({
   head: () => ({
@@ -54,6 +55,13 @@ const solucoes = [
     title: "Amplitude e proteção para você viver sua sacada o ano inteiro.",
     desc: "Sistemas de envidraçamento premium que bloqueiam intempéries e ruídos urbanos. Transforme sua varanda ou área de lazer em um ambiente sofisticado, seguro e altamente aconchegante, independentemente da estação do ano.",
     img: lazer.url,
+  },
+  {
+    id: "revestimentos",
+    tag: "Revestimentos e brises",
+    title: "Revestimentos e brises em alumínio.",
+    desc: "Durabilidade, baixa manutenção e resistência ao tempo. Da fachada residencial ao empreendimento comercial, o alumínio reveste seu projeto com infinitas cores e acabamentos que valorizam o projeto por anos.",
+    img: revestimento.url,
   },
 ];
 
