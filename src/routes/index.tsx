@@ -47,8 +47,8 @@ const solucoes = [
   {
     n: "04",
     tag: "Área de lazer",
-    title: "Envidraçamento de Sacada premium",
-    desc: "Amplitude e proteção contra intempéries e ruídos urbanos.",
+    title: "Envidraçamento de Sacada",
+    desc: "Mais segurança, amplitude, conforto térmico e acústico para sua varanda.",
   },
 ];
 
