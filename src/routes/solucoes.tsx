@@ -38,8 +38,8 @@ const solucoes = [
   {
     id: "comercial",
     tag: "Comercial · Fachadas",
-    title: "A imponência e a credibilidade que o seu negócio exige.",
-    desc: "Fachadas em pele de vidro e estruturas em alumínio de alta resistência. Engenharia robusta executada com a precisão e a segurança que grandes vãos e obras comerciais de alto padrão demandam.",
+    title: "A presença que o seu negócio precisa.",
+    desc: "Fachadas em pele de vidro e esquadrias com vidros de controle solar. Engenharia aplicada com segurança e acabamento impecável para grandes vãos e obras comerciais.",
     img: comercial.url,
   },
   {
