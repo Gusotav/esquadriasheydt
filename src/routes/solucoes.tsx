@@ -30,7 +30,7 @@ const solucoes = [
   {
     id: "residencial",
     tag: "Residencial · Alumínio e PVC",
-    title: "O conforto definitivo que a sua família merece.",
+    title: "O conforto que a sua família merece.",
     desc: "Esquadrias em alumínio e PVC de altíssimo desempenho térmico e acústico. Projetadas sob medida para integrar a estética sofisticada do seu projeto com a paz de espírito de um acabamento impecável e à prova de dores de cabeça.",
     img: residencial.url,
   },
