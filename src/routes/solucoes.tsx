@@ -53,7 +53,7 @@ const solucoes = [
     id: "envidracamento",
     tag: "Envidraçamento de sacada",
     title: "Amplitude e proteção para você viver sua sacada o ano inteiro.",
-    desc: "Sistemas de envidraçamento premium que bloqueiam intempéries e ruídos urbanos. Transforme sua varanda ou área de lazer em um ambiente sofisticado, seguro e altamente aconchegante, independentemente da estação do ano.",
+    desc: "Envidraçamento de sacadas com padronização para todo o condomínio. Mais segurança, conforto térmico e acústico para sua varanda — em qualquer estação do ano.",
     img: lazer.url,
   },
   {
