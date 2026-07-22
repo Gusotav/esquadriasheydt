@@ -90,7 +90,7 @@ function HomePage() {
             </span>
           </>
         }
-        subtitle="Há mais de 47 anos, a HEYDT entrega engenharia, segurança e acabamento impecável em esquadrias e fachadas para as obras mais exigentes do Oeste catarinense."
+        subtitle="Da esquadria da sua casa à fachada do seu empreendimento: a HEYDT transforma PVC, alumínio e vidro em conforto térmico, acústico e segurança. Há mais de 47 anos, nossa fábrica entrega qualidade e desempenho em cada projeto."
         cta={
           <>
             <Link to="/fale-conosco" className="btn-primary bg-white text-primary hover:bg-white/90">
