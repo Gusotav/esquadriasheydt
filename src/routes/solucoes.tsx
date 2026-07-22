@@ -56,6 +56,13 @@ const solucoes = [
     desc: "Sistemas de envidraçamento premium que bloqueiam intempéries e ruídos urbanos. Transforme sua varanda ou área de lazer em um ambiente sofisticado, seguro e altamente aconchegante, independentemente da estação do ano.",
     img: lazer.url,
   },
+  {
+    id: "revestimentos",
+    tag: "Revestimentos e brises",
+    title: "Revestimentos e brises em alumínio.",
+    desc: "Durabilidade, baixa manutenção e resistência ao tempo. Da fachada residencial ao empreendimento comercial, o alumínio reveste seu projeto com infinitas cores e acabamentos que valorizam o projeto por anos.",
+    img: revestimento.url,
+  },
 ];
 
 function Solucoes() {
