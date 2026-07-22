@@ -151,11 +151,11 @@ export function Hero({
               {eyebrow}
             </p>
           )}
-          <h1 className="text-balance font-display font-light text-[clamp(1.85rem,5.6vw,5rem)] leading-[1.08] tracking-[-0.01em] text-white [text-shadow:0_2px_30px_rgb(0_0_0/0.55)]">
+          <h1 className="text-balance font-display font-light text-[clamp(2.25rem,5.6vw,5rem)] leading-[1.06] tracking-[-0.01em] text-white [text-shadow:0_3px_40px_rgb(0_0_0/0.65)] md:leading-[1.08] md:[text-shadow:0_2px_30px_rgb(0_0_0/0.55)]">
             {title}
           </h1>
           {subtitle && (
-            <p className="mt-10 max-w-[52ch] text-balance text-[17px] leading-[1.7] text-white/90 md:text-lg md:leading-[1.75] [text-shadow:0_1px_22px_rgb(0_0_0/0.45)]">
+            <p className="mt-10 max-w-[52ch] text-balance text-[17px] leading-[1.7] text-white/90 md:max-w-[48ch] md:text-lg md:leading-[1.75] [text-shadow:0_1px_22px_rgb(0_0_0/0.45)]">
               {subtitle}
             </p>
           )}
