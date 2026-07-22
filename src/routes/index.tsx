@@ -175,18 +175,9 @@ function HomePage() {
             <SectionHeader
               invert
               eyebrow="Autoridade técnica"
-              title={
-                <>
-                  Quem projeta o luxo, não abre mão da{" "}
-                  <em className="italic text-champagne">segurança HEYDT.</em>
-                </>
-              }
-              subtitle="Ouça o que fazemos e entenda, na prática, os detalhes técnicos que fazem as nossas esquadrias durarem gerações."
+              title="Do projeto à instalação: veja como trabalhamos."
+              subtitle="Cada etapa conduzida para levar o máximo de conforto através das esquadrias. Assista o vídeo para conhecer o caminho do seu pedido."
             />
-            <p className="mt-8 max-w-md text-sm leading-relaxed text-white/70">
-              Do desenho arquitetônico à instalação, cada etapa é conduzida por especialistas
-              treinados nos padrões europeus de acabamento e desempenho.
-            </p>
             <p className="mt-8 text-xs uppercase tracking-[0.25em] text-white/50">
               Detalhes técnicos · HEYDT
             </p>
