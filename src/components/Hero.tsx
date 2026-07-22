@@ -155,7 +155,7 @@ export function Hero({
             {title}
           </h1>
           {subtitle && (
-            <p className="mt-8 max-w-xl text-pretty text-base leading-relaxed text-white/85 md:text-lg [text-shadow:0_1px_18px_rgb(0_0_0/0.55)]">
+            <p className="mt-10 max-w-[52ch] text-balance text-[17px] leading-[1.7] text-white/90 md:text-lg md:leading-[1.75] [text-shadow:0_1px_22px_rgb(0_0_0/0.45)]">
               {subtitle}
             </p>
           )}
