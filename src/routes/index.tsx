@@ -35,7 +35,7 @@ const solucoes = [
   {
     n: "02",
     tag: "Comercial",
-    title: "Fachadas de Vidro e soluções robustas para negócios",
+    title: "Fachadas de Vidro e soluções para negócios",
     desc: "Engenharia estrutural para grandes vãos e obras de alto padrão.",
   },
   {
