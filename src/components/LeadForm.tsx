@@ -28,7 +28,9 @@ interface LeadFormProps {
 }
 
 export function LeadForm({ variant = "light", cta = "Solicitar Orçamento Exclusivo", onSent }: LeadFormProps) {
+  const submitLead = useServerFn(sendLead);
   const [values, setValues] = useState<Values>({
+
     nome: "",
     telefone: "",
     email: "",
