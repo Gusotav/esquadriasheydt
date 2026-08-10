@@ -2,6 +2,7 @@ import { useState, type FormEvent } from "react";
 import { useServerFn } from "@tanstack/react-start";
 import { z } from "zod";
 import { sendLead } from "@/lib/leads.functions";
+import { maskPhoneBR, trackLeadConversion } from "@/lib/gtag";
 
 
 const schema = z.object({
@@ -73,11 +74,11 @@ export function LeadForm({ variant = "light", cta = "Solicitar Orçamento Exclus
       `*E-mail:* ${encodeURIComponent(v.email)}%0A` +
       `*Cidade da obra:* ${encodeURIComponent(v.cidade)}%0A` +
       `*Tipo de projeto:* ${encodeURIComponent(v.tipo)}`;
-    // Abre o WhatsApp de forma síncrona para não ser bloqueado pelo navegador.
-    window.open(`https://wa.me/${WHATSAPP}?text=${msg}`, "_blank", "noopener,noreferrer");
+    const whatsappUrl = `https://wa.me/${WHATSAPP}?text=${msg}`;
+    const fallbackId = `lead-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
 
     try {
-      await submitLead({
+      const result = await submitLead({
         data: {
           nome: v.nome,
           telefone: v.telefone,
@@ -87,6 +88,17 @@ export function LeadForm({ variant = "light", cta = "Solicitar Orçamento Exclus
           origem: window.location.pathname,
         },
       });
+
+      if (result?.ok === true && result.duplicate !== true) {
+        trackLeadConversion({
+          nome: v.nome,
+          email: v.email,
+          telefone: v.telefone,
+          cidade: v.cidade,
+          transactionId: result.leadId ?? fallbackId,
+          value: 1,
+        });
+      }
     } catch (error) {
       console.error("Falha ao enviar lead para o CRM", error);
     }
@@ -94,6 +106,7 @@ export function LeadForm({ variant = "light", cta = "Solicitar Orçamento Exclus
     setSent(true);
     setSending(false);
     onSent?.(v);
+    window.location.href = whatsappUrl;
   }
 
 
@@ -122,10 +135,10 @@ export function LeadForm({ variant = "light", cta = "Solicitar Orçamento Exclus
             type="tel"
             autoComplete="tel"
             value={values.telefone}
-            onChange={(e) => update("telefone", e.target.value)}
+            onChange={(e) => update("telefone", maskPhoneBR(e.target.value))}
             className={fieldBase}
             placeholder="(49) 00000-0000"
-            maxLength={30}
+            maxLength={16}
           />
           {errors.telefone && <p className="mt-2 text-xs text-destructive">{errors.telefone}</p>}
         </div>
