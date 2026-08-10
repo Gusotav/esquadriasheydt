@@ -24,6 +24,7 @@ O botão exibe "Enviando..." durante o processo, como já acontece.
   - `gtag('set', 'user_data', { email, phone_number, address: { first_name, last_name, city, country: 'BR' } })` com normalização: e-mail em minúsculas/trim; telefone convertido para E.164 (`+55` + dígitos, sem duplicar DDI); nome dividido em primeiro nome e restante como sobrenome.
   - `gtag('event', 'conversion', { send_to: 'AW-18306322428/M5-eCPyxvt8cEPyfkZlE', transaction_id, value, currency: 'BRL' })`.
 - **`src/components/LeadForm.tsx`**:
+  - Criar utilitário de mascara de telefone no campo telefone do componente.
   - Remove a abertura síncrona do WhatsApp; passa a `await submitLead(...)` primeiro.
   - Em `result.ok === true` e `duplicate !== true`: dispara a conversão usando `transaction_id = leadId` (fallback: `lead-<timestamp>-<random>` gerado no clique) e `value` do lead.
   - Redirecionamento para o WhatsApp com `window.location.href` (em vez de `window.open`), evitando bloqueio de pop-up por ser assíncrono após o `await`.
