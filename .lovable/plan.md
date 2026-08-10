@@ -15,7 +15,7 @@ O botão exibe "Enviando..." durante o processo, como já acontece.
 
 ## Detalhes técnicos
 
-- **Carregamento do gtag** (`src/routes/__root.tsx`, via `<ClientOnly>` + `useEffect`, ou pequeno módulo `src/lib/gtag.ts`):
+- **Carregamento do gtag** (`src/routes/__root.tsx`, via scripts do head):
   - Injeta `https://www.googletagmanager.com/gtag/js?id=AW-18306322428`.
   - `gtag('js', new Date())` e
     `gtag('config', 'AW-18306322428', { allow_enhanced_conversions: true, conversion_linker: true })`.
