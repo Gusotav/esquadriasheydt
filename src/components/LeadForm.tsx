@@ -1,5 +1,8 @@
 import { useState, type FormEvent } from "react";
+import { useServerFn } from "@tanstack/react-start";
 import { z } from "zod";
+import { sendLead } from "@/lib/leads.functions";
+
 
 const schema = z.object({
   nome: z.string().trim().min(2, "Informe seu nome completo").max(120),
