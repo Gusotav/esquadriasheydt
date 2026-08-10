@@ -1,5 +1,8 @@
 import { useState, type FormEvent } from "react";
+import { useServerFn } from "@tanstack/react-start";
 import { z } from "zod";
+import { sendLead } from "@/lib/leads.functions";
+
 
 const schema = z.object({
   nome: z.string().trim().min(2, "Informe seu nome completo").max(120),
@@ -25,7 +28,9 @@ interface LeadFormProps {
 }
 
 export function LeadForm({ variant = "light", cta = "Solicitar Orçamento Exclusivo", onSent }: LeadFormProps) {
+  const submitLead = useServerFn(sendLead);
   const [values, setValues] = useState<Values>({
+
     nome: "",
     telefone: "",
     email: "",
@@ -47,7 +52,7 @@ export function LeadForm({ variant = "light", cta = "Solicitar Orçamento Exclus
     if (errors[k]) setErrors((e) => ({ ...e, [k]: undefined }));
   }
 
-  function handleSubmit(e: FormEvent) {
+  async function handleSubmit(e: FormEvent) {
     e.preventDefault();
     const parsed = schema.safeParse(values);
     if (!parsed.success) {
@@ -68,11 +73,29 @@ export function LeadForm({ variant = "light", cta = "Solicitar Orçamento Exclus
       `*E-mail:* ${encodeURIComponent(v.email)}%0A` +
       `*Cidade da obra:* ${encodeURIComponent(v.cidade)}%0A` +
       `*Tipo de projeto:* ${encodeURIComponent(v.tipo)}`;
+    // Abre o WhatsApp de forma síncrona para não ser bloqueado pelo navegador.
     window.open(`https://wa.me/${WHATSAPP}?text=${msg}`, "_blank", "noopener,noreferrer");
+
+    try {
+      await submitLead({
+        data: {
+          nome: v.nome,
+          telefone: v.telefone,
+          email: v.email,
+          cidade: v.cidade,
+          tipo: v.tipo,
+          origem: window.location.pathname,
+        },
+      });
+    } catch (error) {
+      console.error("Falha ao enviar lead para o CRM", error);
+    }
+
     setSent(true);
     setSending(false);
     onSent?.(v);
   }
+
 
   return (
     <form onSubmit={handleSubmit} className="grid gap-6" noValidate>

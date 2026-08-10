@@ -16,7 +16,7 @@ Mensagem de confirmação continua a mesma abaixo do botão.
 
 - O header `x-site-secret` não pode ir no navegador (ficaria público). Por isso o envio passa por uma função de servidor do próprio site:
   - Novo arquivo `src/lib/leads.functions.ts` com `createServerFn({ method: "POST" })`, validação Zod do payload (`nome` 2–120, `telefone` 8–30, `email` válido, `cidade`/`tipo`/`origem` opcionais) e `fetch` para
-    `https://project--ce2fdb27-7c12-4e7b-8554-e760682718ed.lovable.app/api/public/site-lead`.
+  `https://project--ce2fdb27-7c12-4e7b-8554-e760682718ed.lovable.app/api/public/site-lead`.
   - `process.env['X_SITE_SECRET']` lido **dentro** do `.handler()`, enviado no header `x-site-secret` junto de `content-type: application/json`.
   - Retorno normalizado: `{ ok: true, duplicate?: boolean, leadId?: string }` ou `{ ok: false, error: '...' }` (mapeando 400/401/500). Nenhum detalhe do provedor é exposto ao cliente.
 - `src/components/LeadForm.tsx`:
