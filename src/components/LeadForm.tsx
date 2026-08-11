@@ -3,6 +3,8 @@ import { useServerFn } from "@tanstack/react-start";
 import { z } from "zod";
 import { sendLead } from "@/lib/leads.functions";
 import { maskPhoneBR, trackLeadConversion } from "@/lib/gtag";
+import { trackLead } from "@/utils/metaPixel";
+
 
 
 const schema = z.object({
