@@ -92,15 +92,25 @@ export function LeadForm({ variant = "light", cta = "Solicitar Orçamento Exclus
       });
 
       if (result?.ok === true && result.duplicate !== true) {
+        const eventId = result.leadId ?? fallbackId;
         trackLeadConversion({
           nome: v.nome,
           email: v.email,
           telefone: v.telefone,
           cidade: v.cidade,
-          transactionId: result.leadId ?? fallbackId,
+          transactionId: eventId,
+          value: 1,
+        });
+        trackLead({
+          nome: v.nome,
+          email: v.email,
+          telefone: v.telefone,
+          cidade: v.cidade,
+          eventId,
           value: 1,
         });
       }
+
     } catch (error) {
       console.error("Falha ao enviar lead para o CRM", error);
     }
