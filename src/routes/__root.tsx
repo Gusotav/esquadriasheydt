@@ -129,9 +129,19 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
+  const lastPathname = useRef<string | null>(null);
+
+  useEffect(() => {
+    if (lastPathname.current === pathname) return;
+    lastPathname.current = pathname;
+    trackPageView();
+  }, [pathname]);
+
   return (
     <QueryClientProvider client={queryClient}>
       <Outlet />
     </QueryClientProvider>
   );
+
 }
