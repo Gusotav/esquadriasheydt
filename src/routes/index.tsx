@@ -10,6 +10,7 @@ import { SolucoesGrid } from "@/components/SolucoesGrid";
 import heroDesktopImg from "@/assets/hero-home-pergolado.jpg.asset.json";
 import heroMobileImg from "@/assets/galeria/portfolio-6.webp.asset.json";
 import videoDobra4 from "@/assets/home-dobra-4.mp4.asset.json";
+import logoCebrace from "@/assets/logo-cebrace.png.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -231,6 +232,23 @@ function HomePage() {
             ))}
           </ul>
 
+          <Reveal>
+            <div className="mt-12 flex flex-col items-center gap-5 rounded-2xl border border-border bg-card px-6 py-7 text-center md:mt-16 md:flex-row md:justify-center md:gap-10 md:px-10 md:text-left">
+              <img
+                src={logoCebrace.url}
+                alt="Cebrace — A Marca do Vidro"
+                width={180}
+                height={52}
+                loading="lazy"
+                decoding="async"
+                className="h-12 w-auto md:h-14"
+              />
+              <span className="hidden h-10 w-px bg-border md:block" aria-hidden="true" />
+              <p className="max-w-md font-display text-lg leading-snug text-foreground md:text-xl">
+                HEYDT é parceira Cebrace, referência em vidros para construção.
+              </p>
+            </div>
+          </Reveal>
         </div>
       </section>
 
